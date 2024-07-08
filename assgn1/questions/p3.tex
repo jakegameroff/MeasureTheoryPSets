@@ -1,0 +1,71 @@
+%! TeX root: ../main.tex
+\noindent \underline{\textbf{Problem 3.}} For every \( A \subseteq \mathbb{R}^{d}  \), \( \delta \coloneqq (\delta_1, \hdots , \delta_d) \), and \( y \coloneqq (y_1, \hdots , y_d ) \in \mathbb{R}^{d} \), define \[A_{\delta ,y} \coloneqq \{ (\delta_1 x_1 + y_1, \hdots , \delta_d x_d + y_d ) : x = (x_1, \hdots , x_d) \in A\}. \]
+\underline{(1) Prove that \( m_*(A_{\delta ,y} ) = \delta_1\cdots \delta _d m_*(A). \) }
+\begin{proof}[Proof of 1]
+Let \( A \subseteq \mathbb{R}^{d}  \),  \( \delta \coloneqq (\delta_1, \hdots , \delta_d) \), and \( y \coloneqq (y_1, \hdots , y_d ) \in \mathbb{R}^{d} \) be arbitrary. Notice that \( A_{\delta ,y} = (\delta A) + y  \). To see this, let \( \delta x + y = (\delta_1 x_1 + y_1, \hdots , \delta_d x_d + y_d) \in A_{\delta ,y}  \). Then \( x \in (\delta A) + y\) as per its definition. The reverse inclusion likewise holds trivially: \(\delta x + y \in (\delta A) + y \implies x \in A_{\delta ,y} \). Now, we can easily apply lemmas 3.1 and 3.2 to complete the proof: \[m_*(A_{\delta ,y}) = m_*((\delta A) + y) = m_*(\delta A) = \delta_1\cdots \delta_d m_*(A).  \] Hence, \( m_*(A_{\delta ,y} ) = \delta_1\cdots \delta_d m_*(A),  \) thereby completing the proof.
+\end{proof}
+\noindent \underline{(2) Prove that $A$ is measurable if and only if $A_{\delta, y}$ is measurable.}
+\begin{proof}$ $\newline
+	\( [\implies ] \) Let \( A \subseteq \mathbb{R}^{d}  \) be measurable. We show that \( A_{\delta ,y}  \) is measurable as well, for fixed \( \delta = (\delta_1, \hdots , \delta_d) \in (0, \infty)^{d}  \) and \( y \coloneqq (y_1, \hdots , y_d) \in \mathbb{R}^{d}  \).
+
+	Since \( A \) is measurable, for each \( \varepsilon > 0 \) there exists an open set \( \mathcal{O} _\varepsilon  \) such that \(A \subseteq  \mathcal{O} _\varepsilon  \) and \[ m_*(\mathcal{O} _\varepsilon  - A) < \frac{\varepsilon }{\delta_1\cdots \delta_d} \tag{\delta_1\cdots \delta _d > 0} . \] But notice that
+\begin{align*}
+	\delta_1\cdots	\delta _d \cdot m_*(\mathcal{O} _\varepsilon - A) &= m_*(\delta (\mathcal{O} _\varepsilon - A)) \tag{Lemma 3.2}\\	
+					  &= m_*(\delta (\mathcal{O} _ \varepsilon - A) + y) \tag{Lemma 3.1}\\
+					  &=m_*((\delta \mathcal{O} _\varepsilon +y) - (\delta A + y)) \tag {Lemma 3.4} \\
+					  &= m_*(\mathcal{O}_{\varepsilon _{\delta ,y} }  - A_{\delta, y} ) < \delta_1\cdots \delta_d\cdot \frac{\varepsilon }{\delta_1 \cdots \delta_d  } = \varepsilon   \tag{by measurability of \( A \) } .
+\end{align*}
+By lemma 3.3, \( \mathcal{O}_{\varepsilon _{\delta ,y} }   \) is an open set, and \( A_{\delta , y} \subseteq \mathcal{O}_{\varepsilon _{\delta ,y} }     \) as if \( \delta x + y \in A_{\delta y} \implies x \in A \implies x \in \mathcal{O} _\varepsilon \implies \delta x + y \in \delta \mathcal{O} _{\varepsilon} + y \implies \delta x + y \in \mathcal{O}_{\varepsilon _{\delta ,y} }    \). Hence, since for arbitrary \( \varepsilon >0 \) we found an open set \( \mathcal{O} _{\varepsilon _{\delta ,y} }  \) such that \( A_{\delta ,y} \subseteq \mathcal{O} _{\varepsilon _{\delta ,y} }   \) and \( m_*(\mathcal{O} _{\varepsilon _{\delta ,y} } - A_{\delta ,y} ) < \varepsilon  \), we conclude that \( A_{\delta ,y}  \) is measurable. \\
+
+\noindent \( [\impliedby ] \) For our fixed \( \delta \coloneqq (\delta_1, \hdots , \delta_d) \in (0,\infty)^{d}  \) and \( y \coloneqq (y_1, \hdots , y_d) \in \mathbb{R}^{d}  \), let \( \delta ' = (\delta_1',\hdots ,\delta_d') \coloneqq (\frac{1}{\delta_1}, \hdots ,\frac{1}{\delta _d}  ) \) (possible as for $1 \leq i \leq d,$ $\delta_i > 0$) and \( y' \coloneqq - y \). Let \( A \subseteq \mathbb{R}^{d}  \). Suppose \( A_{\delta , y}  \) is measurable; this means that for each fixed \( \varepsilon > 0 \) there exists an open set \( \mathcal{O} _\varepsilon  \) such that \( A_{\delta , y} \subseteq \mathcal{O} _\varepsilon  \) and \( m_*(\mathcal{O} _\varepsilon - A_{\delta ,y} ) < \frac{\varepsilon}{\delta_1' \cdots \delta_d'}. \) Then notice that
+\begin{align}
+	\delta_1'\cdots \delta_d' \cdot  m_*(\mathcal{O} _\varepsilon  - A_{\delta ,y} )  &= \delta_1'\cdots \delta_d' \cdot m_*((\mathcal{O} _\varepsilon  - A_{\delta ,y} ) + y')  \tag{Lemma 3.1} \\
+							 &= \delta_1'\cdots \delta_d' \cdot m_*((\mathcal{O} _\varepsilon + y') - (A_{\delta ,y} +y')) \tag{Lemam 3.4 with \( \delta \coloneqq (1,1,\hdots ,1) \in \mathbb{R}^{d}  \) } \\
+							 &= \delta_1'\cdots \delta_d' \cdot m_*((\mathcal{O}_\varepsilon  + y') - \delta A) \tag{By def. of \( A_{\delta ,y}  \) and choice of \( y' \)} \\
+							 &= m_*(\delta '((\mathcal{O} _\varepsilon  + y') - \delta A)) \tag{Lemma 3.2} \\
+							 &= m_*(\delta ' (\mathcal{O} _\varepsilon  + y') - A) < \delta_1'\cdots \delta_d' \cdot \frac{\varepsilon }{\delta_1'\cdots \delta_d'} = \varepsilon, \tag{$\ast$} 
+\end{align}
+where the last equality holds by the definition of \( \delta A  \) and choice of \( \delta ' \), and since if \( A, B \in \mathbb{R}^{d} \), \( \delta (A \setminus B) = \{ \delta x \in \mathbb{R}^{d} : x \in A, x \notin B \} = \{ \delta x  \in \mathbb{R}^{d} : \delta x \in \delta A, \delta x \notin \delta B \} =  \delta A\setminus \delta B.  \) 
+It remains to be shown that \( \delta ' (\mathcal{O} _\varepsilon  + y') \) is open and contains \( A \). 
+\begin{itemize}
+	\item  \(\delta ' (\mathcal{O} _\varepsilon  + y')\) is open: apply lemma 3.3 to the open set \( \mathcal{O} _\varepsilon  \) with \( \delta \coloneqq (1,1, \hdots , 1) \in \mathbb{R}^{d}  \) and \( y' \) to find that \( \mathcal{O}_\varepsilon  + y' \) is open. For the sake of clarity, let \( \mathcal{U} \coloneqq \mathcal{O} _\varepsilon + y'  \). Now apply lemma 3.3 to the open set \( \mathcal{U}  \) with \( \delta ' \) and \( y \coloneqq (0,0,\hdots , 0) \in \mathbb{R}^{d}  \) to find that \( \delta ' \mathcal{U} + (0,0, \hdots , 0)  = \delta ' (\mathcal{O} _\varepsilon + y')\) is open, as needed.
+	\item A \subseteq \delta ' (\mathcal{O} _\varepsilon + y')\): Let \( x = (x_1, \hdots , x_d) \in A \). Then \( (\delta_1 x_1 + y_1, \hdots , \delta_d x_d + y_d) \in A_{\delta ,y} \subseteq \mathcal{O}_\varepsilon   \). But then \( (\delta_1 x_1 + y_1 + (- y_1), \hdots , \delta_d x_d + y_d + (- y_d)) = (\delta_1 x_1 +y_1+y_1', \hdots , \delta_d x_d +y_d+y_d' ) = (\delta_1x_1, \hdots , \delta _d x_d ) \in \mathcal{O}_\varepsilon + y' \) by definition of a set's translation; but then \( x = (\frac{\delta _1}{\delta _1} x_1, \hdots ,\frac{\delta_d}{\delta_d }  x_d) = (x_1, \hdots , x_d) \in \delta ' (\mathcal{O} _\varepsilon + y')  \). Hence, \( A \subseteq  \delta ' (\mathcal{O} _\varepsilon + y')\).
+\end{itemize}
+Therefore, given \( \varepsilon > 0 \), we have found an open set \(  \delta ' (\mathcal{O} _\varepsilon + y') \) such that \( A \subseteq  \delta ' (\mathcal{O} _\varepsilon + y') \) and \( m_*( \delta ' (\mathcal{O} _\varepsilon + y') - A) < \varepsilon   \). Thus, \( A \) is measurable by definition, thereby completing the proof.
+\end{proof}
+\begin{proof}[Lemma 3.1. Translation invariance.]$ $\newline
+Let \( A \subseteq \mathbb{R}^{d}  \) and \( y \in \mathbb{R}^{d}  \). Define \( A + y \coloneqq \{ x + y \in \mathbb{R}^{d} : x \in A \}. \) We will use the definition of exterior measure corresponding to coverings by open cubes (which can be done by problem 1). So suppose \( \{ C_k \}_{k=1}^{\infty}  \) is a sequence of open cubes in \( \mathbb{R}^{d}  \) such that \( A \subseteq \bigcup_{k=1}^{\infty} C_k \). Then,
+\begin{align*}
+	\sum_{k=1}^{\infty} \mbox{vol}(C_k)  &= \sum_{k=1}^{\infty} \mbox{vol}((a_k , b_k)^{d} ) = \sum_{k=1}^{\infty}(b_k - a_k)^{d} \\ 
+					     &= \sum_{k=1}^{\infty}((b_k - a_k)^{d} + y - y) =\sum_{k=1}^{\infty}\prod_{i=1} ^{d} (b_k + y_i - (a_k + y_i)) \\ 
+					     &= \sum_{k=1}^{\infty} \mbox{vol}\left ( {(a_k + y_1, b_k + y_1) \times \cdots \times (a_k + y_d, b_k + y_d)   } \right ) = \sum_{k=1}^{\infty}\mbox{vol}(C_k + y).
+\end{align*}
+Now notice that \( A+y \subseteq \bigcup_{k=1}^{\infty} (C_k + y) \). This holds as if \( x \in A+y \implies x - y \in A\), and since \( A \subseteq \bigcup_{k=1}^{\infty} C_k \), there exists some \( n \geq 1 \) such that \( x - y \in C_n \), but then \( x \in C_n + y \implies x \in \bigcup_{k=1}^{\infty} (C_k + y) .\) Therefore, we have shown that for any covering of \( A \subseteq \bigcup_{k=1}^{\infty} C_k \) there is a covering of \( A+y \subseteq \bigcup_{k=1}^{\infty} (C_k + y) \) such that \(\sum_{k=1}^{\infty}\mbox{vol}(C_k)  = \sum_{k=1}^{\infty}\mbox{vol}(C_k+y) \). Reading the string of equalities in the reverse order implies the exact same statement, but with the covering of \( A+y \) being fixed, and the cover of \( A \) being derived.
+
+We now define the sets \[X \coloneqq \Set{\sum_{k=1}^{\infty} \mbox{vol}(C_k) | A \subseteq \bigcup_{k=1}^{\infty} C_k , \ C_k \mbox{ open cube} },\] and \[Y \coloneqq \Set{\sum_{k=1}^{\infty} \mbox{vol}(C_k + y) | A + y\subseteq \bigcup_{k=1}^{\infty} (C_k+y) , \ C_k + y \mbox{ open cube} }. \] By the work above, \( x \in X \implies x \in Y \) and \( x \in Y \implies x \in X \); therefore, \( X = Y \implies m_*(A) = \inf X = \inf Y = m_*(A+y).\) Therefore, the exterior measure is translation invariant. 
+\end{proof}
+
+\begin{proof}[Lemma 3.2]
+	\emph{If \( A \subseteq \mathbb{R}^{d}  \) and \delta \coloneqq(\delta_1, \hdots , \delta_d ) \in (0,\infty)^{d}\), then \(m_*(\delta A) = \delta_1 \cdots \delta _d \cdot m_*(A)  \), where \( \delta A \coloneqq \{ (\delta_1 x_1, \hdots , \delta_dx_d ) : (x_1, \hdots , x_d) \in A\}  \)}. 
+
+Let \( A \subseteq \mathbb{R}^{d}  \) and \( \delta  \coloneqq(\delta_1, \hdots , \delta_d ) \in (0,\infty)^{d} \) be fixed. Consider a covering of \( A \subseteq \bigcup_{k=1}^{\infty} C_k \) by open cubes \( C_k \) (cf. Problem 1). Then notice that
+\begin{align*}
+	  \prod_{i=1}^{d} \delta_i \sum_{k=1}^{\infty}\mbox{vol}((a_k, b_k)^{d} ) &=  \sum_{k=1}^{\infty}\prod_{i=1} ^{d}\delta _i \cdot (b_k - a_k)^{d} = \sum_{k=1}^{\infty} \prod_{i=1} ^{d} (\delta_i b_k - \delta_i a_k)  \\	
+								      &= \sum_{k=1}^{\infty} \mbox{vol}((\delta_1a_k, \delta_1 b_k  ) \times \cdots \times (\delta_d a_k, \delta_d b_k ) )= \sum_{k=1}^{\infty}\mbox{vol}(\delta C_k) .
+\end{align*}
+Therefore, taking the infimum over all coverings by open cubes \( C_k \), we conclude that \[\inf \prod_{i=1}^{d} \delta_i \sum_{k=1}^{\infty}\mbox{vol}(C_k) = \prod_{i=1}^{d} \delta_i \inf \sum_{k=1}^{\infty}\mbox{vol}(C_k) = \delta_1\cdots \delta_d \cdot m_*(A) = \inf \sum_{k=1}^{\infty}\mbox{vol}(\delta C_k) = m_*(\delta A); \] indeed, for every covering by open cubes \( C_k \) of \( A \), we have \( \delta_1\cdots \delta_d \sum_{k=1}^{\infty}\mbox{vol}(C_k) = \sum_{k=1}^{\infty}\mbox{vol}(\delta C_k)  \); thus, looking at all of such possible coverings, we may deduce that the sets over which we take the infimum (when calculating the exterior measure) must be equal.
+
+Therefore, \( m_*(\delta A) = \delta_1\cdots \delta_d \cdot m_*(A).  \)   
+\end{proof}
+\begin{proof}[Lemma 3.3]
+\emph{For an open set \( \mathcal{O}  \subseteq \mathbb{R}^{d} \), \( \delta = (\delta_1, \hdots , \delta_d) \in (0, \infty)^{d}  \), and \( y \coloneqq (y_1, \hdots , y_d) \in \mathbb{R}^{d}  \) fixed, \( (\delta \mathcal{O} ) + y \) is open.}
+
+To prove this lemma, suppose \( \delta x + y \in (\delta \mathcal{O} ) + y. \) Clearly, this implies that \[ x \in \mathcal{O} \implies \exists \ \varepsilon > 0 : V_\varepsilon (x) \subseteq \mathcal{O} \implies \delta V_\varepsilon (x) + y \subseteq \delta \mathcal{O} + y, \] which holds by the definition \(\delta \mathcal{O} + y \coloneqq \{ \delta x + y \in \mathbb{R}^{d} : x \in \mathcal{O}  \}\) (and note that \( \delta V_\varepsilon (x) + y \) is an open ball that has been scaled and translated, i.e. it is still an open ball). Hence, \( \delta \mathcal{O} + y \) is an open set, as \( x \) and \( \varepsilon  \) were arbitrary.
+\end{proof}
+
+\begin{proof}[Lemma 3.4]
+	\emph{For an open set \( \mathcal{O}  \subseteq \mathbb{R}^{d} \), \( \delta = (\delta_1, \hdots , \delta_d) \in (O, \infty)^{d}  \), and \( y \coloneqq (y_1, \hdots , y_d) \in \mathbb{R}^{d}  \) fixed, we have \(\delta(\mathcal{O} - A) + y = (\delta \mathcal{O} + y) - (\delta A + y)\).}
+	
+	Suppose \( x \in \mathcal{O} - A \). Then \( \delta x + y \in \delta(\mathcal{O} - A) + y   \), and we know that \( x \notin A \), thus \( \delta x + y \notin \delta A + y \) yet \( \delta x + y \in \delta \mathcal{O} + y \); therefore, we obtain \( \delta x + y \in (\delta \mathcal{O} + y) - (\delta A + y)\). Thus \( \delta (\mathcal{O} - A) + y \subseteq (\delta \mathcal{O} + y)  - (\delta A + y). \) Conversely, if \( \delta x + y \in (\delta \mathcal{O} + y)  - (\delta A + y) \), then \( \delta x + y \in \delta \mathcal{O} + y\), but \( \delta x + y \notin \delta A + y \). But this means that \( x \notin A \implies x \in \mathcal{O} - A \implies \delta x + y \in \delta (\mathcal{O} -A) + y	\), therefore  \( \delta (\mathcal{O} - A) + y \supseteq (\delta \mathcal{O} + y) - (\delta A + y). \) By definition of set equality, the lemma is complete.
+\end{proof}
+

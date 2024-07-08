@@ -1,0 +1,23 @@
+%! TeX root: ../main.tex
+\noindent \textbf{Problem 2.} Let \( f : \mathbb{R}^{d}  \to \overline{\mathbb{R}} \) be measurable and \( \Gamma = \{ (x,y) \in \mathbb{R}^{d} \times \mathbb{R} : y = f(x) \}  \). Show that \( \Gamma \) is measurable and \( m(\Gamma) = 0 \).
+\begin{proof}
+	We show first that \( \Gamma \) is measurable. Define the functions \( \hat{h}, \hat{g}  : \mathbb{R}^{d}  \times \mathbb{R} \to \mathbb{R} \) by \[\hat{h} : (x, y) \mapsto f(x) \mbox{ and } \hat{g} : (x,y) \mapsto y. \] Then \( \hat{h}  \) and \( \hat{g}  \) are measurable. Indeed, for every \( c \in \mathbb{R} \),
+\begin{align*}
+	\hat{h} ^{-1} ([-\infty, c)) &= \{ (x, y) \in \mathbb{R}^{d} \times \mathbb{R} : \hat{h} (x,y) < c \} = \{ (x,y) \in \mathbb{R}^{d} \times \mathbb{R} : f(x) < c \}\\ 
+				     &= \{ x \in \mathbb{R}^{d} : f(x) < c \} \times \mathbb{R} = f ^{-1} ([-\infty,c)) \times \mathbb{R}
+\end{align*}
+and
+\begin{align*}
+	\hat{g} ^{-1} ([-\infty,c)) &= \{ (x,y) \in \mathbb{R}^{d} \times \mathbb{R} : \hat{g} (x,y) < c \} = \{ (x,y) \in \mathbb{R}^{d}  \times \mathbb{R} : y < c \} = \mathbb{R}^{d} \times (-\infty,c).
+\end{align*}
+Then \( \hat{h} ^{-1} ([-\infty,c))  = f ^{-1} ([-\infty,c)) \times \mathbb{R} \) is a cartesian product of measurable sets (\( f ^{-1} ([-\infty,c))  \) is measurable since \( f \) is measurable; \( \mathbb{R} \) is measurable as it is a Borel set, which are measurable by lecture) and so is \( \hat{g} ^{-1} ([-\infty,c)) = \mathbb{R}^{d}  \times (-\infty, c) \) (\( \mathbb{R}^{d}  \) and \( (-\infty,c) \) are measurable as they are Borel sets). From lecture we know that cartesian products of measurable sets are measurable so that \( \hat{h} ^{-1} ([-\infty,c))  \) and \( \hat{g} ^{-1} ([-\infty,c))  \) are measurable. Since \( c \) was arbitrary we conclude that \( \hat{h}  \) and \( \hat{g}  \) are measurable.
+
+Since \( \hat{h}  \) and \( \hat{g}  \) are measurable and finite valued, we attain from lecture that \( \hat{f} = \hat{h} - \hat{g}  \) is a measurable function since it is the sum of two measurable functions.\footnote{For the sake of completeness, we note that \(-\hat{g}  \) is measurable as for \( c \in \mathbb{R} \), \( -\hat{g} ^{-1} ([-\infty,c)) = \mathbb{R}^{d} \times (-c, \infty)  \) is the cartesian product of two Borel (and hence measurable) sets and thus is measurable.} Then
+\begin{align*}
+	\hat{f} ^{-1} (\{ 0 \} )  &= \{ (x,y) \in \mathbb{R}^{d} \times \mathbb{R} : \hat{f} (x,y) = 0 \} = \{ (x,y) \in \mathbb{R}^{d} \times \mathbb{R} : \hat{h} (x,y) - \hat{g} (x,y) = 0 \} \\
+				  &= \{ (x,y) \in \mathbb{R}^{d}  \times \mathbb{R} : \hat{h} (x,y) = \hat{g} (x,y) \}  = \{ (x,y) \in \mathbb{R}^{d} \times \mathbb{R} : f(x) = y \} = \Gamma.
+\end{align*}
+But then \(\Gamma =  \hat{f} ^{-1} (\{ 0 \} ) = \hat{f} ^{-1} ([-\infty, 0] \cap [0, \infty]) = \hat{f} ^{-1} ([-\infty, 0]) \cap \hat{f} ([0,\infty])   \) is a finite intersection of measurable sets (by the measurability of \( \hat{f}  \)). Thus \( \Gamma \) is measurable.
+
+Then, using corollary 1 of Fubini's theorem from lecture, since \( \Gamma \) is measurable, defining the set \[\Gamma_{x}  \coloneqq \{ y \in \mathbb{R} : (x, y) \in \Gamma \} = \{ y \in \mathbb{R} : f(x) = y \} = \{ f(x) \}    \] yields \[m(\Gamma) = \int_{\mathbb{R}} m(\Gamma_{x}  ) = \int_{\mathbb{R}} 0 = 0,\] since singleton sets have measure 0. Therefore, this proves that \( \Gamma \) is measurable and of measure 0.
+\end{proof}

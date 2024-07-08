@@ -1,0 +1,23 @@
+%! TeX root: ../main.tex
+\noindent \underline{\textbf{Problem 1.}} Let \( (A_k)_{k \in \mathbb{N} }  \) be a sequence of measurable sets such that \[\sum_{k=1}^{\infty}m(A_k) < \infty.\] Let \( A \) be the set of all \( x \in \mathbb{R}^{d}  \) such that \( x \in A_k \) for infinitely many \( k \). Show that \( A \) is measurable and \( m(A) = 0. \)   
+\begin{proof}
+It suffices to show that \( m_*(A) = 0. \) By lemma 1.1, since \( \sum_{k=1}^{\infty}m(A_k)  = \ell < \infty \) for some \( \ell \in \mathbb{R}_{\geq 0}  \), given \( \varepsilon > 0 \) there exists an \( N \in \mathbb{N}  \) such that \( \sum_{k=N}^{\infty} m(A_k) < \varepsilon . \)
+
+Now we claim that \( A \subseteq \bigcup_{k=N}^{\infty} A_k. \) Indeed, if we fix \( x \in A \) and suppose towards contradiction that \( x \notin \bigcup_{k=N}^{\infty} A_k \), then \( x \) can only be an element of at most each \( A_k \) with \( 1 \leq k \leq N-1 \), a contradiction to the choice of \( A \) as \( x \in A_k \) for only finitely many \( k \).
+
+Thus, by monotonicty and sub-additivity, \[m_*(A) \leq m_*\left ( {\bigcup_{k=N}^{\infty} A_k} \right ) \leq \sum_{k=N}^{\infty} m(A_k) < \varepsilon .  \] Since \( \varepsilon  \) was arbitrary, we conclude that \( m_*(A)  = 0 \). Thus, since we proved in lecture that sets of outer measure zero are measurable, we conclude that \( A \) is measurable with \( m(A) = 0. \) 
+
+
+
+
+
+\end{proof}
+\begin{proof}[Lemma 1.1] \emph{Let \( (a_n)_{n \in \mathbb{N} }  \) be a sequence of non-negative reals with \(\sum_{n=1}^{\infty}a_n = \ell < \infty\) for some \( \ell \in \mathbb{R}_{\geq 0}  \). Then for every \( \varepsilon > 0 \) there exists an \( M \in \mathbb{N}  \) such that \( \sum_{n=M}^{\infty}a_n < \varepsilon  \).}
+
+	Let \( (a_n)_{n \in \mathbb{N} }  \) be given as above. Since \(\sum_{n=1}^{\infty}a_n = \ell \in \mathbb{R}_{\geq 0} ,\) we have that \[\lim_{{N} \to {\infty}} \sum_{n=1}^{N}a_n = \ell.\] Thus, given \( \varepsilon > 0 \) there is an \( M - 1 \in \mathbb{N}  \) such that
+\begin{align*}
+	\left | \ell - \sum_{n=1}^{M - 1}a_n \right | &= \ell - \sum_{n=1}^{M-1}a_n \tag{\(a_n \geq 0 \ \forall n \geq 1\) } \\ 
+						      &= \ell - a_1 - a_2 - \cdots - a_{M-1} = \sum_{n=M}^{\infty}a_n < \varepsilon,
+\end{align*}
+as required.
+\end{proof}

@@ -1,0 +1,31 @@
+%! TeX root: ../main.tex
+\noindent \textbf{Problem 3.} Let \( F \) be a closed subset of \( \mathbb{R} \) whose complement has finite measure. Let \( I : \mathbb{R} \to [0,\infty] \) be the function defined for every \( x \in \mathbb{R} \) by \[I(x) = \int_{\mathbb{R}} \frac{d(y,F)}{|x-y|^{2} } \ dy, \] where \( d(y,F) = \inf \{ |y - z| : z \in F \}  \).
+\begin{enumerate}
+	\item Show that \( d(\cdot, F) \) is Lipshitz continuous in \( \mathbb{R} \), i.e. \[|d(x,F) - d(y,F)| \leq |x-y| \ \forall x, y \in \mathbb{R}.\]
+	\item Show that \( I(x) = \infty \) for each \( x \notin F \) and \( I(x) < \infty \) for a.e. \( x \in F \). You may use the results of Questions 1 and 3 in Assignment 4.
+\end{enumerate}
+\emph{Hint for 3.2 (b). Use a double integration and observe that \( F \cap (y - d(y, F), y + d(y, F)) = \emptyset  \) for every \( y \in \mathbb{R} \setminus F \).}
+\begin{proof}[Proof of 3.1]
+Let \( x, y \in \mathbb{R} \) be fixed and \( \varepsilon > 0 \) be given. By the definition of \( d(\cdot , F) \), for every \( \varepsilon > 0  \) there exists a \( z_{x} \in F \) such that \( d(x,F) > |x - z_{x} | - \varepsilon  \). Using this, notice that
+\begin{align*}
+	d(y,F) &\leq |y - z_{x}| = |y - z_{x} + x - x| \leq |x - y| + |x - z_{x}| \tag{triangle inequality} \\
+	       &< |x - y| + d(x,F) + \varepsilon \tag{definition of infimum} \\
+	       &\iff d(y,F) - d(x,F) < |x-y| + \varepsilon \iff d(x,F) - d(y,F) > -(|x-y| + \varepsilon ). \tag{3.1}
+\end{align*}
+Similarly, for every \( \varepsilon > 0 \) there exists a \( z_{y} \in F \) such that \( d(y,F) > |y - z_{y} | - \varepsilon  \). Using this once more, it follows that
+\begin{align*}
+	d(x,F) &\leq |x - z_{y} | = |x - z_{y} + y - y | \leq |x-y| + |y - z_{y}| \tag{triangle inequality} \\
+	       &< |x-y| + d(y, F) + \varepsilon  \tag{definition of infimum} \\
+	       & \iff d(x, F) - d(y, F) < |x- y | + \varepsilon . \tag{3.2}
+\end{align*}
+Thus, combining (3.1) and (3.2), it follows that \[  -(|x-y| + \varepsilon ) < d(x,F) - d(y,F) < |x-y| + \varepsilon \iff |d(x,F) - d(y,F)| < |x-y| + \varepsilon.  \] since \( \varepsilon  \) was arbitrary, we conclude that \[|d(x,F) - d(y,F)| \leq |x-y|,\] and since \( x \) and \( y \) were arbitrary, we conclude that \( d(\cdot , F) \) is Lipschitz continuous.
+\end{proof}
+\begin{proof}[Proof of 3.2 (a)]
+We show that \( I(x) = \infty \) for each \( x \in \mathbb{R} \setminus F \). Let \( \ell \coloneqq d(x, F) \). Note that \( \ell \neq 0 \) otherwise \( x \in F \) since \( x \) would be a cluster point of \( F \) (as \( \forall \varepsilon > 0 : \exists z_{\varepsilon } \in F : |x - z_{\varepsilon } | <\ell+ \varepsilon = \varepsilon  \iff x \in V_{\varepsilon } (z_{\varepsilon } ) \)) and closed sets (like \( F \)) contain all of their cluster points by definition. 
+
+Let \( c > 1 \) be fixed. From (1), we know that if \( y \in B(x, \ell / c) \) (i.e. \( |x-y| < \ell/c \)) then \( d(y,F) \in B(d(x, F), \ell / c)\) (i.e. \(|d(x,F) - d(y,F)| < \ell / c \)) \( \iff d(y,F) \in  B(\ell, \ell/c) \iff d(y,F) \in (\ell - \ell/c, \ell + \ell/c) \) so that \( d(y,F) > \ell - \ell / c \). Thus, since \( B(x, \ell/c) \subseteq \mathbb{R} \) and \( I \geq 0 \) on \( \mathbb{R} \), we have
+\begin{align*}
+	I(x) = \int_{\mathbb{R}} \frac{d(y,F)}{|x-y|^{2} } \ dy &\geq \int_{B(x, \ell / c)} \frac{d(y,F)}{|x-y|^{2} } \ dy  > \int_{B(x, \ell / c)} \frac{\ell - \ell/c}{|x-y|^{2} } \ dy = (\ell - \ell / c) \int_{B(x, \ell / c)} \frac{1}{|x-y|^{2} } \ dy. \tag{$\ast$}
+\end{align*}
+Now notice that \( B(x, \ell / c) = B(0, \ell / c) + x = \{ a + x \in \mathbb{R} : a \in B(0, \ell) \}  \). Then if \( f(y) = \frac{1}{|x-y|^2}  \) for \( y \in B(x, \ell / c) \), we define for \( y \in B(0, \ell / c) \) the function \( f_{x}(y) = f( y + x ) = \frac{1}{|x - (y+x)|^{2} } = \frac{1}{y^{2} } \). Then, applying the results from Assignment 4, Question 1, we attain from \((\ast)\) that \[I(x) \geq (\ell - \ell / c) \int_{B(x, \ell / c)} \frac{1}{|x-y|^{2} } \ dy = (\ell - \ell / c) \int_{B(0, \ell / c)} \frac{1}{y^{2} } \ dy = (\ell - \ell/c)\int_{[0, \ell / c]} \frac{1}{y^{2} }  \ dy, \] where we can add these endpoints since \( m(\{ 0, \ell / c \} ) = 0 \). Then, notice that \[\int_{[0, \ell / c]} \frac{1}{y^{2} } \ dy= \lim_{{t} \to {0^{+} }} \int_{[t, \ell / c]} \frac{1}{y^{2} } \ dy.   \] Since \( y \mapsto 1/y^{2}  \) is Reimann integrable (as it is continuous) and bounded for any fixed \( t > 0 \), we can equivalently evaluate the Reimann integral to find that \[ I(x) \geq \lim_{{t} \to {0^{+} }} \int_{[t, \ell / c]} \frac{1}{y^{2} } \ dy = \lim_{{t} \to {0^{+} }} \left [ - \frac{1}{y} \right ]_{t}^{\ell / c} = \lim_{{t} \to {0^{+} }} \left( - \frac{1}{\ell / c} + \frac{1}{t}   \right)  = \infty . \] Thus, we conclude as needed that \( I(x) = \infty \) since we showed that \( I(x) \geq \infty \).
+\end{proof}

@@ -1,0 +1,54 @@
+%! TeX root: ../main.tex
+
+\noindent \underline{\textbf{Problem 5.}} Prove that a set \( A \subseteq \mathbb{R}^{d}  \) is measurable if and only if for every set \( B \subseteq \mathbb{R}^{d}  \) (not necessarily measurable), we have \[m_*(B) = m_*(B \cap A) + m_*(B \setminus A). \]
+\begin{proof}$ $\newline
+	\( [\implies ] \) Let \( A \subseteq \mathbb{R}^{d}  \) be an arbitrary measurable set with \( m(A) < \infty \) and \( B \subseteq \mathbb{R}^{d}  \) be any subset. We note that \( B \subseteq (B \cap A) \cup (B \setminus A) \),\footnote{Since \( x \in B \implies x \in A \) or \( x \in A^{c}  \); \( x \in B, x \in A \implies x \in B \cap A \implies x \in (B \cap A) \cup (B \setminus A) \); and \( x \in A^{c} \implies x \in B \cap A^{c} = B \setminus A \implies x \in (B \cap A) \cup (B \setminus A) \).} thus, monotonicity and the finite case of sub-additivity (lecture) imply that \[ m_*(B) \leq m_*((B \cap A) \cup (B \setminus A)) \leq m_*(B \cap A) + m_*(B \setminus A).    \] Thus, if \( m_*(B) = \infty \), we have \(( \leq )\) by monotonicty and we also have \( (\geq) \) trivially, hence suppose \( m_*(B) < \infty \). If \( m_*(A) = \infty, \) then we must have \( m_*(B \cap A) , m_*(B \setminus A) < \infty  \), since \( m_*(B) < \infty  \) (here we use sub-additivity). \\
+
+
+	Thus, we must assert the reverse inequality. Let \( \varepsilon > 0 \) be given. From the hint, there exists an open set \( \mathcal{O}  \) such that \( B \subseteq \mathcal{O}  \) and \( m_*(\mathcal{O} ) < m_*(B) + \varepsilon   \), by definition of the infimum. Hence, for any set \( C \subseteq \mathbb{R}^{d}  \), \( B \subseteq \mathcal{O} \implies B \setminus C \subseteq \mathcal{O} \setminus C  \).\footnote{Since \( x \in B\setminus C \implies x \in B, x \notin C \implies x \in \mathcal{O}, x \notin C \).} Thus, we use \( B \setminus A \subseteq \mathcal{O} \setminus A \), \( B \setminus A^{c} \subseteq \mathcal{O} \setminus A^{c}    \) and monotonicty to obtain
+\begin{align*}
+	m_*(B \setminus A) + m_*(B \setminus A^{c} )   &\leq m_*(\mathcal{O} \setminus A) + m_*(\mathcal{O} \setminus A^{c} )    \\	
+						       &= m_*(\mathcal{O} \cap A^{c} ) + m_*(\mathcal{O} \cap A) \\
+						       &= m(\mathcal{O} \cap A^{c} ) + m(\mathcal{O} \cap A) \tag{a} \\
+						       &= m((\mathcal{O} \cap A^{c} ) \cup (\mathcal{O} \cap A ))  \tag{b} \\
+						       &= m(\mathcal{O} ) = m_*(\mathcal{O} )  < m_*(B) + \varepsilon \tag{c},  
+\end{align*}
+where (a) holds as finite intersections of measurable sets are measurable (open sets are measurable; \( A^{c}  \) is measurable since \( A \) is); (b) holds by countable additivity (since these are disjoints sets as \( \mathcal{O} \cap A \subseteq A\) and \( \mathcal{O} \cap A^{c} \subseteq A^{c} \)); (c) holds.\footnote{We have two cases: if \( x \in \mathcal{O} \cap A^{c} \implies x \in \mathcal{O}  \) if \( x \in \mathcal{O} \cap A \implies x \in \mathcal{O}  \); the other inclusion is proved in footnote 4.} Thus, letting \( \varepsilon \to 0 \), we find that \(m_*(B \setminus A) + m_*(B \setminus A^{c} ) \leq m_*(B) \), as needed. Hence, we have \(m_*(B) = m_*(B \cap A) + m_*(B \setminus A)\), thereby completing the forward implication. \\
+
+\noindent \( [\impliedby] \) Let \( A \subseteq \mathbb{R}^{d}  \) be fixed and suppose that for each subset \( B \subseteq \mathbb{R}^{d}  \), we have \[ m_*(B) = m_*(B \cap A) + m_*(B \setminus A).  \] We first assume that \( A \) is bounded. Let \( \varepsilon > 0 \) be given. By the hint, there is an open set \( \mathcal{O}  \) such that \( A \subseteq \mathcal{O}  \) and \( m_*(\mathcal{O} ) < m_*(A) + \varepsilon  \), by definition of the infimum. Let \( B \coloneqq \mathcal{O}  \) so that
+\begin{align*}
+	m_*(B)  &= m_*(B \cap A) + m_*(B \setminus A)   \\	
+		&= m_*(A) + m_*(B \setminus A). \tag{\( A \subseteq B \implies A = B \cap A \) } \\
+\end{align*}
+Thus, since \( A \) is bounded, \( m_*(A) < \infty \) (as it can be covered by one finite cube), so we have: \[m_*(B \setminus A) = m_*(B) - m_*(A) < \varepsilon .   \] Since \( B \) is open and contains \( A \) (and \( \varepsilon  \) was arbitrary), we conclude that \( A \) is measurable.
+
+We now must prove that the assertion holds for \( A \subseteq \mathbb{R}^{d}  \) which is unbounded. Suppose \( A \subseteq \mathbb{R}^{d}  \) is unbounded, hence \( m_*(A) = \infty \). Let \( M \) be a measurable set with \( m_*(M) < \infty \). We need to show that for any set \( E \subseteq \mathbb{R}^{d}  \), we have \[m_*(E) = m_*(E \cap (A \cap M)) + m_*(E \cap (A \cap M)^{c} ).  \] 
+
+Note that by sub-additivity, \[m_*(E) = m_*((E \cap (A \cap M)) \cup (E \cap (A \cap M)^{c} )) ) \leq m_*(E \cap (A \cap M))  + m_*(M \cap (A \cap M) ^{c} ), \] thus we need only show the converse inequality. Given this, we will be able to prove that \( A \) is measurable. So let \( E \subseteq \mathbb{R}^{d}  \) be a fixed set with \( m_*(E) < \infty \). By hypothesis, \[m_*(E \cap M) = m_*((E \cap M) \cap A) + m_*((E \cap M) \cap A^{c} ). \]  
+The measurability of \( M \) implies (via the \( \implies  \) direction) that
+\begin{align*}
+	m_*(E) &= m_*(E \cap M) + m_*(E \cap M^{c} ) \\
+	       &= m_*((E \cap M) \cap A) + m_*((E \cap M) \cap A^{c} ) + m_*(E \cap M^{c} ) \\
+	       &=m_*(E \cap (A \cap M)) + m_*((E \cap M)\setminus A) + m_*(E \setminus M) \tag{By commutativity of \( \cap  \)} \\
+	       &\geq m_*(E \cap (A \cap M	)) + m_*((E \cap M) \setminus A \cup (E \setminus M)) \tag{By sub-additivity} \\
+	       &= m_*(E \cap (A \cap M)) + m_*(E \setminus (A \cap M)). \tag{Lemma 5.1}  
+\end{align*}
+Thus, since \( E \) was arbitrary, we have that for each set \( E \subseteq \mathbb{R}^{d}  \), \( m_*(E) = m_*(E \cap (A \cap M)) + m_*(E \setminus (A \cap M))  \) (since the first inequality holds trivially and we have proven its converse). By \( \implies  \), this implies that \( A \cap M \) is measurable. Now we fix \( n \geq 1 \) and let \( M \coloneqq [-n,n] \), a measurable set since it is closed (trivially bounded). Hence we know that \( A_n \coloneqq A \cap [-n, n] \) is measurable. As has been argued in problem 2.1, \( A = \bigcup_{n=1}^{\infty} A_n \). Since \( A \) can be written as a countable union of measurable sets, we conclude that \( A \) is measurable, thereby completing the proof. 
+
+\end{proof}
+\begin{proof}[Lemma 5.1]
+\emph{Given sets \( E, A, M \subseteq \mathbb{R}^{d}  \), \( E \setminus (A \cap M) = (E \cap M) \setminus A \cup ( E \setminus M) \).}
+
+Let \( x \in E \setminus (A \cap M) \) be fixed. For this to happen, we need \( x \in E, x \notin A \cap M \); this can happen in two ways, corresponding to if \( x \in M \):
+\begin{itemize}
+	\item \( x \in E, x \in M \) but \( x \notin A\), i.e. \( x \in (E \cap M) \setminus A \).
+	\item \( x \in E \) and \( x \notin M \), i.e. \( x \in E \setminus M. \)   
+\end{itemize}
+hence, we conclude that \( x \in (E \cap M)\setminus A \cup (E\setminus M) \), proving \( (\subseteq ) \). Conversely, suppose \( x \in (E \cap M) \setminus A \cup (E \setminus M) \), then
+\begin{itemize}
+	\item if \( x \in (E \cap M) \setminus A\), then \( x \in E \) and \( x \in M \), but \( x \notin A \implies x \notin A \cap M \). Hence \( x \in E \setminus (A \cap M) \).
+	\item if \( x \in E \setminus M \), then \( x \in E, x \notin M \implies x \notin A \cap M \implies x \in E \setminus (A \cap M) \).
+	
+\end{itemize}
+Since this covers all possible cases, we have proven \( (\supseteq) \). By definition of set equality, we are done. 
+\end{proof}

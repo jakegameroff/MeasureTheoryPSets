@@ -1,0 +1,11 @@
+%! TeX root: ../main.tex
+\noindent \textbf{Problem 3.} Let \( f : [a,b] \to \mathbb{R} \) be a function that fails to be of bounded variation on \( [a,b] \). Show that there exists a point \( x_0 \in [a,b] \) such that for every \( \delta > 0 \), \( f \) fails to be of bounded variation on the interval \( [x_0 - \delta , x_0 + \delta ] \cap [a,b] \).
+\begin{proof}
+	Suppose by contradiction that for every \( x \in [a,b] \) there exists \( \delta _{x} > 0 \) such that \( f \) is of bounded variation on \( [x - \delta , x+\delta ] \cap [a,b] \). By the compactness of \( [a,b] \), \[[a,b] \subseteq \bigcup_{x \in [a,b]}^{} (x - \delta_{x} , x + \delta _{x} ) \implies \exists K_0 \in \mathbb{N} : [a,b] \subseteq \bigcup_{k=1}^{K_0} (x_{k} - \delta_{x_{k} }, x_{k} + \delta _{x_{k} }   ) \subseteq \bigcup_{k=1}^{K_0} [x_{k} - \delta_{x_{k} }, x_{k} + \delta _{x_{k} }   ]\cap [a,b]. \] For \( 1 \leq k \leq K_0 \) define \( F_{k} \coloneqq  [x_{k} - \delta_{x_{k} }, x_{k} + \delta _{x_{k} }   ]\cap [a,b]  \) and \( f_{k} : [a,b] \to \mathbb{R} \) by \( f_{k} = f\chi_{F_{k} }  \). Then \( f_{k}  \) is of bounded variation on \( F_{k}  \) by hypothesis, but it is also of bounded variation on \( [a,b] \) since it vanishes on \( [a,b] \setminus F_{k}  \). Using (1), \(f =  \sum_{k=1}^{K_0}f_{k}  \) is of bounded variation on \( [a,b] \), a contradiction.
+\end{proof}
+\noindent \textbf{Problem 4.} Let \( f \) be of bounded variation on \( [a,b] \) and define \( v(x) = T_{f} (a, x) \) for all \( x \in [a,b] \). Show that \( |f'| \leq v' \) a.e. on \( [a,b] \) and infer from which that \[\int_{[a,b]} |f'| \leq T_{f} (a,b).\]
+\begin{proof}
+For all reals \( x, y \in [a,b] \) with \( x < y \), \( |f(y) - f(x)| \leq T_{f} (x,y) = v(y) - v(x) \). Thus, \[\frac{|f(x)-f(y)|}{y-x} \leq \frac{v(x) - v(y)}{y - x} }.  \] Sending \( y \to x \), it follows that \( |f'| \leq v' \), whenever \( f' \) and \( v' \) exist. Since \( f \) is of bounded variation, \( f' \) exists \( a.e. \) in \( (a,b) \), and since \( v \) is monotone increasing, \( v' \) exists a.e. in \( (a,b) \). Thus, \( |f'| \leq v' \) a.e. in \( [a,b] \).  
+
+Since \( v \) is increasing, so is \( v' \), thus by monotonicity, \[\int_{[a,b]} |f'| \leq \int_{[a,b]} v' \leq v(b) - v(a) = v(b) = T_{f} (a,b).\] 
+\end{proof}

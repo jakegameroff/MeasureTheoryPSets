@@ -1,0 +1,13 @@
+%! TeX root: ../main.tex
+\noindent \underline{\textbf{Problem 2.}} Let \( A \) be a subset of \( [0, \infty) \) and \( A^{2} \coloneqq \{ x^{2} \in \mathbb{R} : x \in A \}  \).
+\begin{enumerate}
+	\item Prove that if \( m_*(A) = 0 \), then \( m_*(A^{2} ) = 0 \).
+	\item Give an example of a set \( A \) such that \( m_*(A) < \infty \) and \( m_*(A^{2} ) = \infty \).\todo{consistent enums}
+\end{enumerate}
+\begin{proof}[Proof of 2.1]
+
+\end{proof}
+\begin{proof}[Solution For 2.2]
+	Let \[ A \coloneqq \bigcup_{n = 1}^{\infty} (n^{3} , n^{3}  + \frac{1}{n^{4} }   ). \] By problem 1, we will use the outer \( m_* \) which approximates the volume of \( A \) via \emph{open cubes}. Notice that each interval \( (n^{3} , n^{3} + \frac{1}{n^{4} } ) \subseteq A \) is itself an open cube for \( n \geq 1 \). Hence, \[\sum_{n=1}^{\infty}\mbox{vol}\left(\left(n^{3}, n^{3} + \frac{1}{n^{4} }\right )\right ) = \sum_{n=1}^{\infty} \left ( {n^{3} + \frac{1}{n^{4}} - n^3}  \right )  = \sum_{n=1}^{\infty} \frac{1}{n^{4} } \geq m_*(A),  \] since this is one possible covering. Note also that by the \( p \)-test, \( \sum_{n=1}^{\infty} \frac{1}{n^{4} }  \) is a finite number. Hence \( m_*(A) < \infty \). Notice that \( A^{2} = \bigcup_{n=1}^{\infty} (n^{6}, (n^{3} + \frac{1}{n^{4} } ) ) \); if \( x^{2}  \in A^{2} \implies x \in A \implies \exists \ n \geq 1 : x \in (n^{3} , n^{3} + \frac{1}{n^{4} } \implies n^{3} < x < n^{3} + \frac{1}{n^{4} } \implies n^{6} < x^{2} < \left(n^{3} + \frac{1}{n^{4} } \right) ^{2} \implies x^{2} \in (n^{6} , (n^{3} + \frac{1}{n^{4} } )^{2}) \subseteq \bigcup_{n=1}^{\infty} (n^{3} + \frac{1}{n^{4} } )^{2})    \); and if \( x^{2} \in \bigcup_{n=1}^{\infty} (n^{6}, (n^{3} + \frac{1}{n^{4} } )^{2} ) \implies \exists \ n \geq 1 : n^{6} < x^{2}  <(n^{3} + \frac{1}{n^{4} } )^{2}  \implies n^{3} < x < n^{3} + \frac{1}{n^{4} }   \) (since all positive values) \( \implies x \in (n^{3} , n^{3} + \frac{1}{n^{4} } ) \subseteq \bigcup_{n=1}^{\infty} (n^{3} , n^{3} + \frac{1}{n^{4} } ) \implies x \in A \implies x \in A^{2} .\) By the same reasoning as above, we have \[\sum_{n=1}^{\infty}\mbox{vol}\left ( {(n^{6}, (n^{3} + \frac{1}{n^{4} } )^{2} ) )} \right ) = \sum_{n=1}^{\infty} \left ( {n^{6} - n^{6} + \frac{2n^{3} }{n^{4} } + \frac{1}{n^{8} }  } \right ) > \sum_{n=1}^{\infty} \frac{1}{n}, \] which diverges to \( \infty \). Hence, \(\sum_{n=1}^{\infty}\mbox{vol}\left ( {(n^{6}, (n^{3} + \frac{1}{n^{4} } )^{2} ) )} \right ) = \infty \) by direct comparison. Finally, we note that \( m_*(A) =\sum_{n=1}^{\infty}\mbox{vol}\left ( {(n^{6}, (n^{3} + \frac{1}{n^{4} } )^{2} ) )} \right ) = \infty  \), since $A$ has been written as a union of disjoint open cubes.\todo{ask}
+
+

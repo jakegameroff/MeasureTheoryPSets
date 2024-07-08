@@ -1,0 +1,29 @@
+%! TeX root: ../main.tex
+\noindent \underline{\textbf{Problem 4.}} Let $A$ be the subset of $[0,1]$ which consists of all numbers which do not have the digit 4 appearing in their decimal expansion. Prove that $A$ is measurable and find $m(A)$.
+\begin{proof}
+We begin by constructing \( A \) as follows, writing the set in explicit form:
+
+We define \( \tilde{A}_n \) to be the partition of the interval \( [0,1] \) into \( 10^{n}  \) disjoint intervals of equal length. In other words,
+\begin{itemize}
+	\item \( \tilde{A_0} \coloneqq \{[0,1]\} \),
+	\item \(\tilde{A_1} \coloneqq \{[0, 0.1), [0.1, 0.2) , [0.2, 0.3) , \hdots , [0.8, 0.9) , [0.9, 1] \} \),
+	\item \(\tilde{A_2} \coloneqq \{ [0, 0.01) , [0.01, 0.02) , \hdots , [0.98, 0.99) , [0.99, 1]\},  \)
+	\item For \( k > 2 \): \( \tilde{A_k} = \{ [0, \frac{1}{10^{k}}), [\frac{1}{10^{k} }, \frac{2}{10^{k} }), \hdots , [ \frac{10^{k} - 1 }{10^{k} }  ,1]   \}  \) 
+\end{itemize}
+Define \[ A_n \coloneqq \bigcup_{}^{} \  \Bigl \{ [a_i, b_i) \in  \tilde{A_n} : \mbox{4 is not in the decimal expansion of \( a_i \)} \Bigr \} \cup [\frac{10^{n}-1}{10^{n} } , 1]. \] Then it's easy to see that \( A_n \) is the set of all points \( x \in [0,1] \) such that the first \( n \) digits in the decimal expansion of \( x \) are not 4, i.e. if \( x = x_0. x_1x_2x_3\cdots  \), then \( x_i \neq 4 \) for \( 1 \leq i \leq n \). 
+Hence, it is clear that \[A = \bigcap_{n=0}^{\infty} A_n.\]  
+
+Now note that for \( k \in \mathbb{N}  \) the length of each interval \( I \in \tilde{A_k}\) is \( \frac{1}{10^{k} }  \) (by construction of \( \tilde{A_k}  \)).
+From which it follows that the measure\footnote{This measure equals the sum of the lengths of its intervals. Indeed, \( A_k \) is measurable since it is the countable union of measurable sets. So countable additivity applies.} of each set \( A_k \) is \( (1 - \frac{1}{10^{k} })^{k} = \left ( {\frac{9}{10} } \right )^{k}     \).
+
+
+This holds by induction on \( k \). Since \( A_0 = \tilde{A_0}  \), \( A_0\) has measure \(1 \); and \( A_1 = [0, 0.1) \cup [0.1, 0.2) \cup [0.2, 0.3) \cup [0.3, 0.4) \cup [0.5, 0.6) \cup [0.6 , 0.7) \cup [0.7, 0.8) \cup [0.8, 0.9) \cup [0.9, 1]  \) has measure \( \frac{9}{10}.  \) By induction, suppose for some \( k \geq 0 \) 	\( A_k \) has measure \( (\frac{9}{10})^{k}   \). Then the set \( A_{k+1}  \) corresponds to partitioning each interval from \( A_k \) into 10 further sub-intervals; and one of which will be removed (the one containing an endpoint with the digit 4) so that the length of each interval from \( A_k \) is decreased to \( \frac{9}{10}  \) its original length in \( A_{k+1}  \). If \( m_*(A_k) = \sum_{k=1}^{\infty}\ell_k  \), then \( m_*(A_{k+1} ) = \sum_{k=1}^{\infty}\frac{9}{10}\ell_k = \frac{9}{10} \cdot (\frac{9}{10} 	)^{k} = (\frac{9}{10} )^{k+1}    \), by the inductive hypothesis, as required.
+
+
+But for fixed \( k \geq 0 \), \( A \subseteq A_k \), and \( m_*(A_k) = (\frac{9}{10})^{k}  \), so, by monotonicty, \( m_*(A) \leq m_*(A_k)\). Now let \( \varepsilon > 0 \) be fixed. By Archimedeanity, there exists a \( k \in \mathbb{N}  \) with \( k > \log_{9/10} \varepsilon   \) so that \(m_*(A) \leq m_*(A_k) =  (\frac{9}{10} )^{k} < ( \frac{9}{10})^{\log_{9/10} \varepsilon} = \varepsilon     \) (as \( \frac{9}{10} < 1 \), the inequality flips). Since \( \varepsilon  \) was arbitrary, we conclude that \( m_*(A) \leq m_*(A_k) = 0 \implies m_*(A) = 0. \) But this implies that \( A \) is measurable by lecture, as we proved that a set \( A \subseteq \mathbb{R}^{d}  \) is measurable if it has outer measure 0.
+
+Therefore, \( A \) is measurable with \( m(A) = 0 \), as was to be shown.
+
+
+
+\end{proof}

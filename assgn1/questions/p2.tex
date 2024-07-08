@@ -1,0 +1,33 @@
+%! TeX root: ../main.tex
+\noindent \underline{\textbf{Problem 2.}} Let \( A \) be a subset of \( [0, \infty) \) and \( A^{2} \coloneqq \{ x^{2} \in \mathbb{R} : x \in A \}  \).
+\begin{enumerate}
+	\item Prove that if \( m_*(A) = 0 \), then \( m_*(A^{2} ) = 0 \).
+
+	\item Give an example of a set \( A \) such that \( m_*(A) < \infty \) and \( m_*(A^{2} ) = \infty \).
+\end{enumerate}
+\begin{proof}[Proof of 2.1]
+	We first suppose that \( A \) is bounded, i.e. there is an \( M \in \mathbb{N}  \) such that \( A \subseteq [0, M] \), and such that \( m_*(A) = 0 \). This means that for each \( \varepsilon > 0 \) there is a sequence \( \{ I_n \}_{n=1} ^{\infty}  \) of open intervals (open cubes; cf. Problem 1) such that \[A \subseteq \bigcup_{n=1}^{\infty} I_n \coloneqq \bigcup_{n=1}^{\infty} (a_n , b_n) \mbox{ and } \sum_{n=1}^{\infty}\mbox{vol}(I_n) < m_*(A) + \varepsilon  = \varepsilon .\] We claim that \( A^{2} \subseteq \bigcup_{n=1}^{\infty} I_n^{2 } = \bigcup_{n=1}^{\infty} (a_n^{2}, b_n^{2}  ) \). This holds as if \( x ^{2} \in A^{2} \implies x \in A \implies \exists \ n \in \mathbb{N}_{>0} : x \in (a_n, b_n) \implies a_n < x < b_n \implies a_n^{2} < x^{2} < b_n^{2}     \) (as all non-negative) \( \implies x^{2} \in (a^{2}_n , b^{2}_n) \subseteq \bigcup_{n=1}^{\infty} (a_n^{2} , b_n^{2} ).    \) Now, since \( A \) is bounded we let \( \ell \coloneqq \sup_{n \geq 1} \{ b_n + a_n   \} \leq 2M < \infty	 \). Thus, given \( \varepsilon > 0 \), find a covering of \( A \) by open intervals \( I_n \) such that \[ \sum_{n=1}^{\infty}\mbox{vol}(I_n) < \delta \coloneqq\frac{\varepsilon }{\sup_{n\geq 1} \{ b_n + a_n \} } > 0. \footnote{Note that if \(\sup_{n \geq 1} \{ b_n + a_n \}  = 0\), then \( A^{2} \subseteq \{ 0 \}   \) so that \( m_*(A^{2} ) = 0  \), so suppose \(\sup_{n \geq 1} \{ b_n + a_n \} > 0 \).}\] Then
+\begin{align*}
+	\sum_{n=1}^{\infty} \mbox{vol}(I_n^{2} )  &= \sum_{n=1}^{\infty}(b_n^{2} - a_n^{2})   \\	&= \sum_{n=1}^{\infty}(b_n - a_n)(b_n + a_n) \\
+						  &\leq \ell \sum_{n=1}^{\infty}(b_n-a_n) =  \ell\sum_{n=1}^{\infty}\mbox{vol}(I_n) < \ell \delta = \varepsilon .
+\end{align*}
+Thus, for fixed \( \varepsilon > 0 \), we have found a covering of \( A^{2}  \) by intervals \( I_n^{2}  \) such that \(m_*(A^{2} ) <   \sum_{n=1}^{\infty} \mbox{vol}(I_n^{2} ) < \varepsilon  \). Sending \( \varepsilon \to 0 \) implies that \( m_*(A^{2} ) = 0\) for bounded \( A \). Now suppose that \( A \) is unbounded, with \( m_*(A) = 0. \) Then we can write \( A \) as \[A = \bigcup_{n=1}^{\infty} (A \cap [0, n]),\] a countable union of bounded intervals.\footnote{This holds as \( x \in A \implies \exists \ n \geq 0 : x \leq n \implies x \in A \cap [0,n] \subseteq \bigcup_{n=1}^{\infty} (A \cap [0,n] )\); and \(x \in \bigcup_{n=1}^{\infty} (A\cap [0,n]) \implies \exists \ n \geq 1 : x \in A \ \land \ x \in [0, n] \implies x \in A.\)} So that \[ m_*(A) = m_*( \bigcup_{n=1}^{\infty} (A \cap [0, n])) \leq \sum_{n=1}^{\infty}m_*(A \cap [0,n]) = \sum_{n=1}^{\infty} 0 = 0,  \] by sub-additivity and since \( A \cap [0,n] \subseteq A \) for each \( n \) implies that \( m_*(A \cap [0,n]) \leq m_*(A) = 0 \implies m_*(A \cap [0,n]) = 0.  \) We can likewise write \( A^{2} = \bigcup_{n=1}^{\infty} (A \cap [0,n])^{2} = \bigcup_{n=1}^{\infty} (A^{2} \cap [0,n^{2} ] )   \) to find that
+\begin{align*}
+	m_*(A^{2} )  &\leq \sum_{n=1}^{\infty} m_*(A^{2} \cap [0,n^{2}] ) \tag{applying same argument as above} \\	
+		     &= \sum_{n=1}^{\infty}m_*((A \cap [0,n])^{2} ) \tag{\(\ast\)} \\
+		     &= \sum_{n=1}^{\infty}m_*(A \cap [0,n]) \tag{by boundedness} \\
+		     &= \sum_{n=1}^{\infty}0 = 0 \tag{By monotonicty, as argued above},
+\end{align*}
+where \((\ast)\) holds as \( x^{2} \in A^{2} \cap [0,n^{2} ] \implies x \in A \cap [0,n] \implies x^{2}  \in (A \cap [0,n])^{2}    \) and \( x^{2}  \in (A \cap [0,n])^{2} \implies x \in A, x \in [0,n] \implies x^{2}  \in A^{2}, x\in [0, n^{2}] , \implies x^{2} \in A^{2} \cap [0,n^{2}]       \) as needed (hence they are subsets of each other). Thus, we have proven the unbounded case as well, since \( m_*(A^{2}) \leq 0 \implies m_*(A^{2} ) = 0. \) 
+
+Therefore, we conclude that for \( A \subseteq [0, \infty), \) \( m_*(A) = 0 \implies m_*(A^{2} ) = 0  \), thereby completing the proof.
+
+\end{proof}
+\begin{proof}[Solution For 2.2]
+Let \[A \coloneqq \bigcup_{n=2}^{\infty} (n, n + \frac{1}{n^{2} } ).\] By problem 1, we use \( m_*  \) which approximates the volume of \( A \) via open cubes. Since each interval is itself an open cube, we must have that \[ \sum_{n=2}^{\infty}\mbox{vol}((n, n + \frac{1}{n^{2}}  )) = \sum_{n=2}^{\infty} \left ( {n + \frac{1}{n^{2} } - n} \right ) = \sum_{n=2}^{\infty}\frac{1}{n^{2} } \geq m_*(A).    \] By the \( p \)-test, \( \sum_{n=2}^{\infty}\frac{1}{n^{2} }  \) is a finite number which is an upper bound for \( m_*(A)  \), hence \( m_*(A) < \infty. \)
+
+Now notice that \( A^{2} = \bigcup_{n=2}^{\infty} (n^{2}, (n + \frac{1}{n^{2} })^{2}    )  \), and by the same reasoning as above, we have \[\sum_{n=2}^{\infty}\mbox{vol}((n^{2}, (n + \frac{1}{n^{2} }  ) ^{2} ) ) = \sum_{n=2}^{\infty}(n^{2} + \frac{2n}{n^{2}} + \frac{1}{n^{4} }  - n^{2}  ) = \sum_{n=2}^{\infty}(\frac{2}{n} + \frac{1}{n^{4} } ) \geq \sum_{n=2}^{\infty} \frac{1}{n},\] since the harmonic series diverges, \(\sum_{n=2}^{\infty}\mbox{vol}((n^{2}, (n + \frac{1}{n^{2} }  ) ^{2} ) )  \) does too. But notice that \[ m_*(A^{2} ) = \sum_{n=2}^{\infty}\mbox{vol}((n^{2}, (n + \frac{1}{n^{2} }  ) ^{2} ) ) ,  \] since we have written \( A^{2}  \) (which is open as it is a union of open intervals) as a union of disjoint (cf. Lemma 2.1) open cubes (the equality thus holds by lecture). Thus, we have found a suitable example where \( m_*(A) < \infty  \) yet \( m_*(A^{2} ) = \infty  \). 
+\end{proof}
+\begin{proof}[Lemma 2.1]
+Indeed, for fixed \( n \geq 2 \), \( (n-1+\frac{1}{(n-1)^{2} } )^{2}  = (\frac{(n-1)^{3} + 1 }{(n-1)^{2} } )^{2} = \frac{n^2(n^2-3n+3)^2}{(n-1)^{4} } \), hence \( \frac{n^2(n^2-3n+3)^2}{(n-1)^{4} } - n^{2} = \frac{n^{2}(n^{2}-3n+3 )^{2} -n^{2}(n-1)^{4}   }{(n-1)^{4} } < 0 \implies n^{2}((n^{2} - 3n + 3 )^{2} - (n-1)^{4}  ) < 0 \implies (n^{2} - 3n + 3 )^{2} - (n-1)^{4} < 0 \implies (n-2)(n^{2} + \frac{5n}{2} +2 ) < 0 \) (via tedious factoring). Thus, such holds for \( n \geq 2 \), i.e. our intervals are disjoint for \( n \geq 2 \) (as the endpoints do not intersect).
+\end{proof}

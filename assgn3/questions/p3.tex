@@ -1,0 +1,12 @@
+%! TeX root: ../main.tex
+\section*{Problem 3}
+\noindent \textbf{3.} Let \( f(x,y) \) be a function in \( \mathbb{R}^{2}  \) that is \emph{separately continuous}, i.e. for each fixed variable, \( f \) is continuous in the other variable. Prove that \( f \) is measurable in \( \mathbb{R}^{2}  \). \emph{Hint. approximate \( f \) in the variable \( x \) by piecewise-continuous functions.}
+\begin{proof}
+For each \( k \in \mathbb{N}  \) define \( f_k(x,y) \coloneqq f\left(\frac{\lceil kx \rceil}{k}, y \right)\). Then, for each \( k \in \mathbb{N} \), \( f_k \) is piecewise continuous. To see why, for each integer \( j \), we define the sets
+\[ A_j \coloneqq \{ x \in \mathbb{R} \mid j < kx \leq j+1 \}, \]
+within which the function \( f_k(x,y) \) takes the constant value \( f\left(\frac{j+1}{k}, y\right) \) (\( y \) fixed) so that \( f_k \) is continuous in \( x \) on \( A_j \). By the separate continuity of \( f \), \( f_k \) is continuous in \( y \) on \( A_j \). Thus, \( f _k\) is continuous on \( A_j \) so that it is piecewise continuous on its entire domain.
+
+	Furthermore, \( f_k(x,y) \to f(x,y) \) pointwise in \( \mathbb{R}^{2}  \) since for fixed \( y \) the sequence \(\frac{\lceil kx \rceil}{k} \to x\) as \( k \to \infty\). Indeed, by definition, \( kx \leq \lceil kx \rceil \leq kx + 1 \implies x \leq \frac{\lceil kx \rceil}{k} \leq x + \frac{1}{k}  \). Hence sending \( k \to 0 \) gives \( \lim_k x \leq  \lim_k\frac{\lceil kx \rceil}{k} \leq \lim_k (x+1/k) \) so that by the squeeze theorem, \( x\leq \lim_k  \frac{\lceil kx \rceil}{k} \leq x \) as needed. Hence by the continuity of \( f \) in \( x \), \( f_k(x,y) = f\left(\frac{\lceil kx \rceil}{k}, y \right)\to f(x,y) \) as \( k \to \infty \) (sequential definition of continuity).
+
+	Since there exists a sequence of functions \( \{f_k\}_{k \in \mathbb{N} }  \) such that \( f_k \to f \) pointwise for each \( x \in \mathbb{R}^{2}  \), \( f \) is measurable by lecture, thereby completing the proof.
+\end{proof}

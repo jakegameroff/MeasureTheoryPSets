@@ -1,0 +1,30 @@
+%! TeX root: ../main.tex
+\noindent \underline{\textbf{Problem 3.}} Let \( A , B \subseteq \mathbb{R}^{d} \) and \( A + B \coloneqq \{ x + y : x \in A, y \in B \}  \).
+\begin{enumerate}
+	\item Show that if \( A \) is closed and \( B \) is compact, then \( A + B \) is closed.
+	\item If \( A \) and \( B \) are closed, show that \( A + B \) is measurable.
+\end{enumerate}
+\begin{proof}[Proof of 1]
+Let \( (z_n)_{n \in \mathbb{N} }  \) be a sequence in \( A+B \), with \( z_n \to z \in \mathbb{R}^{d}  \) as \( n \to \infty \). Then for each \( n \geq 1 \) we can write \( z_n \coloneqq a_n + b_n \), where \( (a_n)_n \subseteq A \) and \( (b_n)_n \subseteq B \). To show that \( A+B \) is closed, it suffices to prove that \( z \in A+B \), as this would show that \( A+B \) contains all of its cluster points, since \( (z_n) \) was an arbitrary sequence.
+
+Since \( B \) is compact, it is sequentially compact, thus there is a subsequence \( (b_{n_k})_{k \in \mathbb{N} }  \) of \( (b_n) \) such that \( b_{n_k} \to b \in B \) as \( k \to \infty \). Since \( z_n = a_n + b_n \to z \) as \( n \to \infty \), we must have that all of its subsequences do too. In particular, \( z_{n_k} = a_{n_k} + b_{n_k} \to z    \) as \( k \to \infty \). Thus, \( a_{n_k} + b \to z \) as \( k \to \infty \), so that \( a_{n_k} \to z - b \) as \( k \to \infty \).\footnote{Indeed, since \( b_{n_k} \to b \) and \( a_{n_k} + b_{n_k} \to z \) as \( k \to \infty \), given \( \varepsilon > 0 \), there is an \( M_1 \in \mathbb{N}  \) such that \( m > M_1 \) implies \( d(a_{n_m} + b_{n_m}, z) < \varepsilon /2 \) and an \( M_2 \in \mathbb{N}  \) such that \( m > M_2 \) implies \( d(b_{n_m}, b ) = d(b, b_{n_m} )< \varepsilon  / 2  \), so that for \( m > M \coloneqq \max_{}\{ M_1, M_2 \}  \), \( d(a_{n_m} + b , z ) \leq d(a_{n_m} + b, a_{n_m} + b_{n_m}   ) + d(a_{n_m} + b_{n_m}, z  ) = d(b, b_{n_m}  ) + d(a_{n_m} + b_{n_m}, z  ) < 2 \cdot \varepsilon /2 = \varepsilon \), since \( d(a_{n_m} + b_{n_m}, a_{n_m} + b) = \sqrt{\sum_{i=1}^{d}(a_{n_m_i} + b_{n_m_i} - a_{n_m_i} - b_i  )^{2} } = \sqrt{\sum_{i=1}^{d}(b_{n_m_i}- b_i  )^{2} }   = d(b_{n_m}, b )  \). It follows that \( a_{n_k} \to z - b \) as \( k \to \infty \), as \( m > M \implies d(a_{n_m} + b ,z ) = \sqrt{\sum_{i=1}^{d}(a_{n_m_i} + b_i - z_i )^{2} } =  \sqrt{\sum_{i=1}^{d}(a_{n_m_i} - (z_i-b_i) )^{2} } = d(a_{n_m}, z - b ) < \varepsilon .\)} Hence, we have found a convergent sequence \( (a_{n_k})_{k \in \mathbb{N} } \subseteq A \); by closedness, \( a_{n_k} \to z - b \in A \). Thus, \( b \in B \) and \( z - b \in A \) means \( z_{n_k} \to (z-b) + b = z \in A+B \), and \( z_n \to z \) as well, hence \( z_n \to z \in A+B \). Therefore, \( A+B \) is closed, since \( (z_n)_{n \in \mathbb{N} }  \) was an arbitrary sequence. 
+\end{proof}
+\begin{proof}[Proof of 2]
+	We note that the result holds whenever \( B \) is compact. Indeed, this implies by (1) that \( A+B \) is closed; since closed sets are measurable, \( A+B \) is measurable as needed. Let \( n \geq 1 \) be a fixed positive integer. Then \( B_n \coloneqq B \cap [-n,n]^{d}  \) is compact, since \( B \cap [-n,n]^{d} \subseteq [-n,n]^{d}   \) is a closed subset of a compact set (since finite intersections of closed sets are closed; cf. Lemma 3.1). Thus, \( A+B_n \) is closed and hence measurable. Since we can write \[A+B = \bigcup_{n=1}^{\infty} (A+B_n),\] as a countable union of measurable sets (cf. Lemma 3.2), we conclude that \( A+B \) is measurable.
+\end{proof}
+\begin{proof}[Lemma 3.1]
+	\emph{Let \( X \subseteq \mathbb{R}^{d}  \) be compact, with a closed subset \( Y \subseteq X \). Then \( Y \) is compact.} 
+
+	Let \( \{ U_\alpha \}_{\alpha \in I}  \) be a collection of open sets for some index set \( I \) such that \( Y \subseteq \bigcup_{\alpha \in I}^{} U_\alpha \) is an open cover of \( Y \). Since \( Y \) is closed, \( Y^{c}  \) is open, so that \( X \subseteq \bigcup_{\alpha \in I}^{} U_\alpha \cup Y^{c}  \) is an open cover of \( X \). Indeed, if \( x \in X \), then if \( x \in Y \implies \exists \ \alpha \in I : x \in U_\alpha \subseteq \bigcup_{\alpha \in I}^{} U_\alpha \cup Y^{c}  \) and if \( x \notin Y \implies x \in Y^{c} \subseteq \bigcup_{\alpha \in I}^{} U_\alpha \cup Y^{c}   \).
+
+	By compactness, there exists an \( N \in \mathbb{N}  \) such that \( X \subseteq \bigcup_{k=1}^{N} U_{\alpha_k} \cup Y^{c}   \). But then \( Y \subseteq \bigcup_{k=1}^{N} U_{\alpha_k} \), since \( Y^{c}  \) does not contribute to the cover of \( Y \) trivially. Thus, since \( \{ U_\alpha \}_{\alpha \in I}  \) was arbitrary, we conclude that \( Y \) is compact.
+\end{proof}
+\begin{proof}[Lemma 3.2]
+	\emph{Let \( A,B \subseteq \mathbb{R}^{d}  \). Then \( A+B = \bigcup_{n=1}^{\infty} (A+B_n) \), where \( B_n \coloneqq B \cap [-n,n]^{d}  \).}
+
+	\( [\subseteq ] \) Let \( x = a+b = (a_1 + b_1, \hdots , a_d + b_d) \in A+B \) be arbitrary. Since \( \mathbb{R}^{d} = \bigcup_{n=1}^{\infty} [-n,n]^{d}  \), there exists an \( n \geq 1 \) such that \( b \in [-n ,n]^{d}  \). Hence, \( a + b \in A + B_n \) as \( b \in B \cap [-n,n]^{d}  \); thus \( x \in \bigcup_{n=1}^{\infty} (A+B_n) \). Hence \( A+B \subseteq \bigcup_{n=1}^{\infty} (A+B_n). \)
+
+	\( [\supseteq] \) Let \( x = a+b = (a_1 + b_1, \hdots , a_d+b_d) \in \bigcup_{n=1}^{\infty} (A+B_n). \) Then there exists an \( n \geq 1 \) such that \( a+b \in A+B_n \implies a \in A \mbox{ and }b \in B\cap [-n,n]^{d} \subseteq B \implies a+b \in A+B  \). Hence \( \bigcup_{n=1}^{\infty} (A+B_n) \subseteq A+B. \)
+
+	By definition of set equality, it follows that \( A+B = \bigcup_{n=1}^{\infty} (A+B_n) \), thereby completing the proof.
+\end{proof}

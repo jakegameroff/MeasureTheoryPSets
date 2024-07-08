@@ -1,0 +1,17 @@
+%! TeX root: ../main.tex
+\section*{Problem 5}
+\noindent \textbf{5.1.} Show that the conclusion of Egorov's theorem can fail if we drop the assumption that the domain has finite measure.
+\begin{proof}
+	Let \( E \coloneqq [1, \infty) \) so that \( m(E) = \infty \). For \( k \in \mathbb{N}  \), define \( f_k : E \to \{ 0,1 \}  \) by \( f_k(x) = \chi_{[k, k+1)}(x)  \). We have the following claims:
+\begin{enumerate}
+	\item \emph{For each \( k \in \mathbb{N}  \), \( f_k \) is measurable.} Let \( k \in \mathbb{N}  \) be fixed. Since \( f_k(E) = \{ 0,1 \} \) is finite and \( m(\{ x \in [1, \infty) : f_k(x) \neq 0 \}) = m(\{ x \in [1 , \infty) : x \in [k, k + 1) \}  )= m([k, k + 1)) = 1 \), (i.e. \( f_k \) has finite support), each \( f_k \) is a simple function and hence measurable by lecture.
+	\item \emph{\( f_k \to 0 \) pointwise in \( E \).} Let \( \varepsilon > 0 \) be given. For each \( x \in [1, \infty) \), let \( N \coloneqq \lfloor x \rfloor \in \mathbb{N}  \) so that \( x \in [N, N + 1) \). Then for all \( n > N \) we have \( f_n(x) = \chi_{[n, n+1)} = 0 \) (since \( n > N \implies [N, N+1) \cap [n, n+1) = \emptyset  \), i.e. \(x \notin [n, n+1) \)) so that \( |f(x) - f_n(x)| = |0 - 0| = 0 < \varepsilon  \). Thus, \( f_k \to 0 \) pointwise in \( E \).
+	\item \emph{There exists an \( \varepsilon > 0 \) such that for any closed set \( F_\varepsilon \subseteq E \), \( m(E - F_\varepsilon ) > \varepsilon  \) or \( f_k \) does not converge uniformly to \( f \) in \( F_\varepsilon  \).} Let \( \varepsilon \coloneqq 1/2 \) and \( F_\varepsilon  \subseteq E \) be any closed set.
+	\begin{enumerate}
+			jwwef wef we f
+		\item Suppose \( m_*(E - F_\varepsilon ) < \varepsilon  = 1/2 \). By contradiction suppose also that \( f_k \) converges uniformly to \( 0 \). Then there exists an \( N \in \mathbb{N}  \) such that for all \( n > N \) and for all \( x \in F_\varepsilon  \), \( |f(x) - f_n(x)| = |0-f_n(x)| = |\chi_{[n, n+1)}(x) | < 1/2.\) But then we must have \( x \in F_\varepsilon \implies x \in [1, N + 1) \) so that \( F_\varepsilon \subseteq [1, N+1) \). Since \( x \in E - [1,N+1) \implies x \in E, x \notin [1, N+1) \implies x \in E ,x \notin F_\varepsilon  \implies x \in E - F_\varepsilon  \), this implies that \( E - [1, N+1) \subseteq E - F_\varepsilon   \). Hence by monotonicity, \[m_*(E - [1,N+1) ) = m_*([N+1, \infty)) = \infty \leq m_*(E - F_\varepsilon ) \implies m_*(E - F_\varepsilon ) = \infty, \tag{\ast}  \] a contradiction to the choice of \( F_\varepsilon  \). Hence, if \( m_*(E - F_\varepsilon ) < \varepsilon  \), there exists no such set \( F_\varepsilon  \) in which \( f_k \to 0 \) uniformly.
+		\item On the other hand, suppose \( f_k \to 0 \) uniformly in \( F_\varepsilon  \). As aforementioned, there exists an \( N \in \mathbb{N}  \) such that for all \( n > N \) and all \( x \in F_\varepsilon  \) we have \( |\chi_{[n,n+1)}(x)| < 1 /2 \iff \chi_{[n,n+1)}(x) = 0   \). Hence by the exact same reasoning used in \((\ast)\), \( F_\varepsilon \subseteq [1, N + 1) \implies E - [1, N+1) \subseteq E - F_\varepsilon \implies m_*((E - F_\varepsilon )) = \infty \).
+	\end{enumerate}	
+\end{enumerate}
+Therefore, this sequence of functions \( \{ f_k \} _{k \in \mathbb{N} }  \) is a sufficient counter-example to Egorov's theorem without the assumption that the domain of each \( f_k \) is of finite measure.
+\end{proof}

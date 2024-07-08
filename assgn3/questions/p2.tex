@@ -1,0 +1,69 @@
+%! TeX root: ../main.tex
+\section*{Problem 2}
+\noindent \textbf{2.} A function \( f : A \to \overline{\mathbb{R}} \) is called \emph{Borel measurable} provided its domain \( A \subseteq \mathbb{R}^{d}  \) is a Borel set and for each \( c \in \mathbb{R} \), the set \( \{ x \in A : f(x) < c \}  \) is a Borel set. \\
+
+\noindent \textbf{2.1.} Prove that every Borel measurable function is Lebesgue measurable.
+\begin{proof}
+	Let \( A \subseteq \mathbb{R}^{d}  \) be a Borel set and \( f : A \to \overline{\mathbb{R}} \) be Borel measurable. Let \( c \in \mathbb{R} \) be fixed. Then \( \{ x \in A : f(x) < c\} = \{ x \in A : f(x) \in [-\infty, c) \} =  f^{-1}([-\infty, c))   \) is a Borel set. Since Borel sets are obtained via countable unions and complements of open sets, all Borel sets are measurable (this was proven in lecture). Thus, \( f^{-1}([-\infty, c))  \) is measurable, and since \( c \) was arbitrary, we conclude that \( f \) is Lebesgue measurable.
+\end{proof}
+\noindent \textbf{2.2.} If \( f \) is Borel measurable and \( B \) is a Borel set, then \( f^{-1}(B) \) is a Borel set.
+\begin{proof}
+Let \( A \subseteq \mathbb{R}^{d}  \) be a Borel set and \( f : A \to \overline{\mathbb{R}} \) be Borel measurable. Let \( \Omega \) denote the collection of all sets \( B \) such that \( f^{-1}(B)  \) is a Borel set. We show that \( \Omega \) is a \(\sigma\)-algebra containing the open sets.
+\begin{itemize}
+	\item \( \mathbb{R} \in \Omega \) since
+		\begin{align*}
+			f^{-1}(\mathbb{R})  &= f^{-1}\left ( {\bigcup_{k=1}^{\infty} (-k,k)} \right ) =  \bigcup_{k=1}^{\infty} f^{-1}((-k,k)),
+		\end{align*}
+		which holds by the properties of the pre-image.\footnote{Certainly, if \( \{ A_k \}_{k \in \mathbb{N} }  \) is a sequence of sets in \( \mathbb{R} \), \( x \in \bigcup_{k=1}^{\infty} f^{-1}( A_k) \iff \exists \ m \geq 1 : x \in f^{-1}(A_m) \iff \exists \ m \geq 1 : f(x) \in A_m \iff f(x) \in \bigcup_{k=1}^{\infty} A_k \iff x \in f^{-1}(\bigcup_{k=1}^{\infty} A_k)  \).} Since \( f \) is Borel measurable, applying lemma 2.2 for each interval \( (-k,k) \), we conclude that \( f^{-1}(\mathbb{R})   \) is a Borel set, since countable unions of Borel sets are Borel sets.	
+\item If \( X, Y \in \Omega \), then \( f^{-1}(X) \) and \( f^{-1}(Y)  \) are Borel sets. Thus, their difference \( f^{-1}(X) \setminus f^{-1}(Y) = f^{-1}(X \setminus Y)    \) is a Borel set. Thus, \( X \setminus Y \in \Omega \).\footnote{Indeed, for any sets \( F,E \subseteq \mathbb{R} \), \( x \in f^{-1}(F) \setminus f^{-1}(E)  \iff f(x) \in F, f(x) \notin E \iff f(x) \in F\setminus E \iff x \in f^{-1}(F\setminus E) \).} 
+	
+	\item If \( \{ X_k \}_{k \in \mathbb{N} }  \) is a sequence of sets in \( \Omega \), then for each \( k \geq 1 \), \( f^{-1}(X_k)  \) is a Borel set. Since countable unions of Borel sets are Borel sets, we conclude that \( \bigcup_{k=1}^{\infty} f^{-1}(X_k) = f^{-1}(\bigcup_{k=1}^{\infty} X_k)    \) is a Borel set (cf. footnote 2).
+	\item If \( \mathcal{O} \subseteq \mathbb{R} \) is an open set, then by lecture, we can write \( \mathcal{O}  \) as a countable union of disjoint open intervals \( \mathcal{O} = \bigcup_{k=1}^{\infty} (a_k, b_k) \) so that \[f^{-1}(\mathcal{O} ) = f^{-1}\left ( {\bigcup_{k=1}^{\infty} (a_k, b_k)} \right )  = \bigcup_{k=1}^{\infty} f^{-1}((a_k, b_k)).\] Applying lemma 2.2 to \( f^{-1}((a_k, b_k))  \) for each \( k \geq 1 \), we conclude that each \( f^{-1}((a_k, b_k))  \) is a Borel set. Since countable unions of Borel sets are Borel sets, we conclude that \( f^{-1}(\mathcal{O} ) = \bigcup_{k=1}^{\infty} f^{-1}((a_k, b_k)) \) is a Borel set. Thus, \( \mathcal{O} \in \Omega\).
+\end{itemize}
+Therefore, the collection of sets \( B \) for which \( f^{-1}(B)  \) is a Borel set is a \(\sigma\)-algebra $\Omega$ containing the open sets. Since the Borel \(\sigma\)-algebra is the smallest \(\sigma\)-algebra containing the open sets, $\Omega$ contains the Borel \(\sigma\)-algebra. In particular, we deduce that if \( B \) is a Borel set, then \( B \in \Omega \) so that \( f^{-1}(B)  \) is a Borel set by defintion. Since \( B \) was arbitrary, the proof is complete.
+\end{proof}
+
+\noindent \textbf{2.3.} If \( f \) and \( g \) are Borel measurable, then \( f \circ g \) is Borel measurable.
+\begin{proof}
+Let \( f : B \to \overline{\mathbb{R}}, \ g : A \to B \) be Borel measurable functions, where \( A \subseteq \mathbb{R}^{d}  \) and \( B \subseteq \mathbb{R} \) are Borel sets. We must show that for each \( c \in \mathbb{R} \), the set \( \{ x \in A : (f \circ g) (x) < c \}  \) is a Borel set.
+
+Let \( c \in \mathbb{R} \) be fixed. Since \( f \) is Borel measurable, \(E \coloneqq f^{-1}([-\infty, c))  \) is a Borel set. Thus, \[ (f\circ g)^{-1} ([-\infty, c))  =  g^{-1}(f^{-1}([-\infty,c)) ) = g^{-1}(E)  \] is a Borel set. Indeed, since \( E \) is a Borel set and \( g \) is Borel measurable, by (2.2) we must have that \( g^{-1}(E)  \) is a Borel set. Since \( c \) was arbitrary, we conclude that \( f \circ g \) is Borel measurable.
+\end{proof}
+
+\noindent \textbf{2.4.} If \( f \) is Borel measurable and \( g \) is Lebesgue measurable, then \( f \circ g \) is Lebesgue measurable.
+\begin{proof}
+	Since \( f \) is Borel measurable, by (2.1) it is Lebesgue measurable. By lecture, composition of Lebesgue measurable functions are Lebesgue measurable so that \( f \circ g \) is Lebesgue measurable.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%% L E M M A S %%%%%%%
+\begin{proof}[Lemma 2.1]
+	\emph{Let \( f : A \to \overline{\mathbb{R}}\) be Borel measurable, where \( A \subseteq \mathbb{R}^{d}  \) is a Borel set. Then for each \( c \in \mathbb{R} \), \( \{ x \in A : f(x) > c \}  \) is a Borel set.}
+
+Let \( c \in \mathbb{R} \) be fixed. Since \( f \) is Borel measurable, \( \{ x \in A : f(x) < c \} = f^{-1}([-\infty, c))  \) is a Borel set. Since \( \mathbb{R} \) is a Borel set, we must have that \( \mathbb{R} \setminus f^{-1}([-\infty,c)) = f^{-1}([-\infty,c))^{c} = f^{-1}([-\infty,c)^{c} ) = f^{-1}([c, \infty])      \) is a Borel set (as the difference of two Borel sets is a Borel set).\footnote{Indeed, \( x \in (f^{-1}([-\infty,c))^{c} \iff x \notin f^{-1}([-\infty,c)) \iff f(x) \notin [-\infty,c) \iff f(x) \in [-\infty,c)^{c} \iff x \in f^{-1}([-\infty,c)^{c} )    = f^{-1}([c,\infty])    \).}
+
+Thus, \( \{ x \in A : f(x) \geq c \}  \) is a Borel set. Since \( c \) was arbitrary, for each \( n \in \mathbb{N}  \) we must have that \( \{ x \in A : f(x) \geq c + \frac{1}{n}  \}  \) is a Borel set. Thus, \[\bigcup_{n=1}^{\infty} \{ x \in A : f(x) \geq c + \frac{1}{n}  \} = \bigcup_{n=1}^{\infty} f^{-1}([c+\frac{1}{n} , \infty]) = f^{-1}\left ( {\bigcup_{n=1}^{\infty} [c+\frac{1}{n}, \infty] } \right ) = f^{-1}((c,\infty])\tag{\ast}\] is a Borel set as countable unions of Borel sets are Borel sets.\footnote{In \((\ast)\), we used \( (c , \infty] = \bigcup_{n=1}^{\infty} [c+1/n, \infty]\). This holds as if \( x \in (c, \infty] \), then there an \( n \in \mathbb{N}  \) such that \( x \geq c + \frac{1}{n} \implies x \in [c+1/n, \infty] \subseteq \bigcup_{n=1}^{\infty} [c+1/n, \infty] \), which holds by Archimedeanity as \( x > c \). Conversely, if \( x \in \bigcup_{n=1}^{\infty} [c+1/n , \infty] \), then there is an \( m \geq 1 \) such that \( x \in [c + 1/m, \infty] \subseteq (c,\infty] \) since \( c+1/m > c \). Thus, the result holds.} Thus, \( f^{-1}((c, \infty]) = \{ x \in A : f(x) > c \}  \) is a Borel set, thereby completing the lemma.
+\end{proof}
+\begin{proof}[Lemma 2.2]
+	\emph{Let \( f : A \to \overline{\mathbb{R}}\) be Borel measurable, where \( A \subseteq \mathbb{R}^{d}  \) is a Borel set. Then for \( a, b \in \mathbb{R} \) with \( a < b \), \( f^{-1}((a,b))  \) is a Borel set.}
+	Notice that
+\begin{align*}
+f^{-1}((a,b)) &= f^{-1}(\{ x \in \overline{\mathbb{R}} : x > a \mbox{ and } x < b \} ) = f^{-1} ((a, \infty] \cap [-\infty, b) )= f^{-1}((a,\infty])\cap  f^{-1}([-\infty,b)) .   
+\end{align*}
+
+ 
+By properties of the inverse image.\footnote{Indeed, if \( X,Y \subseteq \mathbb{R} \), then \( x \in f^{-1}(X \cap Y) \iff f(x) \in X \cap Y \iff f(x) \in X , f(x) \in Y \iff x \in f^{-1}(X), x \in f^{-1}(Y) \iff x \in f^{-1}(X) \cap f^{-1}(Y)      \).} Hence \( f^{-1}((a, \infty]) = \{ x \in A : f(x) > a \}   \) is a Borel set by lemma 2.1, and \( f^{-1}([-\infty, b)) = \{ x \in A : f(x) < b \}   \) is a Borel set since \( f  \) is Borel measurable. Hence, \( \mathbb{R} \setminus f^{-1}([-\infty,b)) = f^{-1}([-\infty,b))^{c}    \) is a Borel set since \( \mathbb{R} \) is (and the difference of two Borel sets is a Borel set). Thus, \( f^{-1}((a, \infty]) \setminus f^{-1}([-\infty,b))^{c}  = f^{-1}((a, \infty]) \cap f^{-1}([-\infty, b)  ) = f^{-1}((a,b))  \) is a Borel set, completing the lemma.
+\end{proof}

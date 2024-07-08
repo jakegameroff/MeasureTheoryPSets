@@ -1,0 +1,22 @@
+%! TeX root: ../main.tex
+\section*{Problem 1}
+\noindent \textbf{1.1.} Let \( f, g \) be continuous functions on \( (a,b) \). Show that if \( f = g \) a.e. in \( (a,b) \), then \( f = g \) in \( (a,b). \)
+\begin{proof}
+Let \( f, g \) be two continuous functions on \( (a,b) \) for \( a,b \in \mathbb{R}  \) with \( a < b \). Suppose \( f = g \) a.e. in \( (a,b) \). We define the set \( \mathcal{N} \coloneqq \{ x \in (a,b) : f(x) \neq g(x) \}  \) and show that it must be empty to assert the claim. Since \( f \) and \( g \) are continuous, so is their difference \( h \coloneqq f - g \). Towards a contradiction, suppose there exists \( p \in \mathcal{N}  \) so that \( f(p) \neq g(p) \). Let \( \alpha \coloneqq d(f(p) - g(p), 0) >0\). 
+
+By the continuity of \( h \) at \( p \), given \( \varepsilon \coloneqq \alpha \) there exists a \( \delta > 0 \) such that if \( x \in (a,b) \) with \( d(x, p) < \delta  \) then \( d(h(x), h(p)) < \varepsilon . \) Since \( \mathcal{N}  \) has measure 0 there exists a point \( q \in V_\delta (p) \cap (a,b) \) such that \( q \notin \mathcal{N}  \).\footnote{This holds as otherwise, \( V_\delta (p) \cap (a,b) \) is open (finite intersection of open sets) so that for each \( q \in V_\delta (p) \cap (a,b) \) there is an \(r > 0 \) such that \(V_r(q) \subseteq V_\delta (p) \cap (a,b) \); hence \( \mathcal{N}  \) must have measure at least \( q + r - (q - r ) = 2r   > 0\), since \( V_r(q) \subseteq \mathcal{N}  \) implies by monotonicity that \(0 < 2r = m(V_r(q)) \leq m(\mathcal{N} )\), that \( m(\mathcal{N} ) > 0 \) is a contradiction} Therefore \( h(q) = f(q) - g(q) = 0. \) But then \( d(q, p) < \delta  \), yet \(d(h(q), h(p)) = d(0, f(p)-g(p)) = \alpha \not < \alpha\), a contradiction to the continuity of \( h \). Therefore, \( p \notin \mathcal{N}  \). Since \( p \) was arbitrary, we conclude that \( \mathcal{N} = \emptyset  \) and hence that \( f = g \) on \( (a,b) \).
+\end{proof}
+
+\noindent \textbf{1.2.} Show by providing a counter-example that the assertion in (1.1) is false if \( (a,b) \) is replaced by a general measurable set \( A \).
+\begin{proof}[Solution]
+	Let \( f : [0, 1] \cup \{ 2 \} \to \{ 5, 5.1 \}  \) be given by \[f(x) = \begin{cases}
+		5 & x \in [0,1] \\
+	5.1 & x = 2
+\end{cases}\]
+and \( g : [0,1] \cup \{ 2 \} \to \{ 5 \}  \) be given by \( g(x) = 5 \). Then \( A \coloneqq [0,1] \cup \{ 2 \}  \) is measurable (closed sets are measurable and finite unions of measurable sets are measurable). Clearly, \( f = g \) a.e. in \( [0,1] \cup \{ 2 \}  \) since they differ only on \( \{ 2 \} \) which has measure 0 since it is a finite set.
+\begin{itemize}
+	\item \( f \) is continuous at each \( p \in [0,1] \cup \{ 2 \}  \), since if \( p \in [0,1] \) and \( \varepsilon > 0 \) are fixed, if we let \( \delta  = \varepsilon  \) and suppose \( x \in [0,1] \cup \{ 2 \}  \) with \( d(x,p) < \delta  \), then if \( x \in [0,1] \) then \( d(f(x),f(p)) = d(5,5) = 0 < \varepsilon \), and if \( x = 2 \) with \( d(2,p) < \delta  \), then \( d(f(2), f(p)) = d(5.1, 5) = 0.1 < d(2, 1) = 1 \leq d(2, p) < \delta = \varepsilon \); likewise, if \( p = 2 \), given \( \varepsilon > 0 \) let \( \delta = \frac{1}{2}  \). Then if \( x \in [0,1] \cup \{ 2 \}  \) is such that \( d(x,2) < 1/2 \), then \( x = p \). Thus, \( d(p,p) = 0 < \delta \implies d(f(p),f(p)) = 0 < \varepsilon . \) Thus, \( f \) is continuous.
+	\item \(g\) is continuous since it is uniformly continuous: given \( \varepsilon > 0 \) choosing \( \delta = \varepsilon  \) implies that for any \( x, y \in [0,1] \cup \{ 2 \}  \) with \( d(x,y) < \delta  \), we have \( d(f(x),f(y)) = d(5, 5) = 0 < \varepsilon   \).
+\end{itemize}
+Since \( f \) and \( g \) are both continuous and \( f = g \) a.e. on \( [0,1] \cup \{ 2 \}  \), however \( f \neq g \) on \( [0,1] \cup \{ 2 \}  \), these functions serve as a counter example to the generalised version of the claim in (1.1), as needed.
+\end{proof}

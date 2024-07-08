@@ -1,0 +1,39 @@
+%! TeX root: ../main.tex
+\noindent \underline{\textbf{Problem 5.}}
+\begin{enumerate}
+	\item Show that every closed subset of \( \mathbb{R}^{d}  \) is a \( G_\delta  \) set and every open subset of \( \mathbb{R}^{d}  \) is a \( F_\sigma  \) set.
+
+\emph{Hint. If \( F \subseteq \mathbb{R}^{d}  \) is closed, consider \( O_n \coloneqq \{ x \in \mathbb{R}: d(x,F) < 1/n \}  \).}
+
+\item Show that \( \mathbb{Q}  \) is an \( F_\sigma  \) set in \( \mathbb{R} \) but not a \( G_\delta  \) set.
+
+	\emph{Hint. You may argue by contradiction: assume that \( \mathbb{Q}  \) is both an \( F_\sigma  \) set and a \( G_\delta  \), then show that there exist open sets \( (O_n)_{n \in \mathbb{N} }  \) which are all dense in \( \mathbb{R} \) and whose intersection is empty, and finally derive a contradiction with a well known property of \( \mathbb{R} \).}
+\end{enumerate}
+\begin{proof}[Proof of 1]$ $\newline
+	\textbf{1.1. Closed subsets of \( \mathbb{R}^{d}  \) are \( G_\delta  \) sets.}
+
+Let \( E \subseteq \mathbb{R}^{d}  \) be closed. Consider for each \( n \in \mathbb{N}_+  \) the set \( O_n \coloneqq \{ x \in \mathbb{R}^{d}  : \exists  \ p \in E : d(x,p) < 1/n  \} \). Clearly, for \( n \geq 1 \), \( E \subseteq O_n \), since if \( x \in E \), then \( d(x,x) = 0 < 1/n \). Since \( n \geq 1 \) was arbitrary, \( E \subseteq O \coloneqq \bigcap_{n=1}^{\infty} O_n. \) Now suppose \( x \in O. \) Then, for \( k = 1, 2, \hdots  \), there exists a point \( x_k \in E : d(x, x_k) < \frac{1}{k}  \). Let \( \varepsilon > 0 \) be fixed. By Archimedeanity, choose an \( N \in \mathbb{N}  \) such that \( 1/N < \varepsilon  \). Then if \( n > N \), \( d(x, x_n) < \frac{1}{n} < \frac{1}{N} < \varepsilon  \). Thus, the sequence \( (x_k)_{k \in \mathbb{N} } \subseteq E \) converges to \( x \). Since \( E \) is closed, we must have that \( x \in E \). Thus, \[E = O =  \bigcap_{n=1}^{\infty} O_n.\] It remains to be shown that \( O_n \) is open for each \( n \geq 1 \). So fix \( n \geq 1 \) and consider \( x \in O_n \). Then there exists \( p \in E : d(x,p) < \frac{1}{n}  \). Then \( x \in V_{1/n}(p) \subseteq O_n\). Indeed, if \( y \in V_{1/n}(p) \implies d(y, p) < \frac{1}{n} \implies y \in O_n.  \) Hence, we have written \( E \) as a countable intersection of open sets, hence \( E \) is a \( G_\delta  \) set.
+
+\noindent \textbf{1.2. Open subset of \( \mathbb{R}^{d}  \) are \( F_\sigma  \) sets.}
+
+Let \( U \subseteq \mathbb{R}^{d}  \) be open. Then \( U^{c}  \) is closed. By 1.1, we can write \( U^{c} = \bigcap_{n=1}^{\infty} O_n  \), where each \( O_n \) is some open set. But then, for \( n \geq 1 \), \( O_n^{c}  \) must be closed so that \[U = (U^{c})^{c} = \left ( {\bigcap_{n=1}^{\infty} O_n} \right ) ^{c} =   \bigcup_{n=1}^{\infty} O_n^c, \] via DeMorgan's law. Hence, we have written \( U \) as a countable union of closed sets \( O_n^{c}  \), hence \( U \) is an \( F_\sigma  \) set.\footnote{For the sake of completeness, \( U = (U^{c})^{c}   \) since \( x \in U \iff x \notin U^{c} \iff x \in (U^{c})^{c}    \).}
+\end{proof}
+\begin{proof}[Proof of 2]
+	By lemma 5.1, \( \mathbb{Q}  \) is an \( F_\sigma  \) set in \( \mathbb{R} \). Suppose towards contradiction that \( \mathbb{Q}  \) is also a \( G_\delta  \) set in \( \mathbb{R} \). Then, there exists a sequence of open sets \( \{ \mathcal{U}_n : n \geq 1 \}  \) such that \[\mathbb{Q} = \bigcap_{n=1}^{\infty} \mathcal{U}_n.\] Clearly, for each \( n \geq 1 \), \( \mathcal{U}_n  \) is dense in \( \mathbb{R} \). Indeed, since \( \mathbb{Q}  \) is dense in \( \mathbb{R} \) and \( \mathbb{Q} = \bigcap_{n=1}^{\infty} \mathcal{U} _n \subseteq \mathcal{U}_n  \), given any \( a,b \in \mathbb{R}: a<b,\) there is a \( q \in \mathbb{Q} \subseteq \mathcal{U}_n \) such that \( a < q< b \) so that \( \mathcal{U} _n \) is dense in \( \mathbb{R} \). Since \( \mathbb{Q}  \) is countable, we can enumerate \( \mathbb{Q}  \) as a sequence \( \{ q_n : n \geq 1 \}  \).
+
+	For each \( n \geq 1 \), define the open set \( \mathcal{O}_n \coloneqq \mathcal{U}_n \setminus \{ q_n \}  \). Then \( \mathcal{O}_n \) is still dense in \( \mathbb{R} \), since given \( a , b \in \mathbb{R} : a<b \), there were infinitely-many \( q \in \mathbb{Q}  \) satisfying \( a < q < b \), i.e. removing \( q_n \) is insignificant. Furthermore, \( \mathcal{O}_n \) is open since \( \{ q_n \}  \) being closed implies that \( \{ q_n \}^{c}  \) is open so that \( \mathcal{O}_n \cap \{ q_n \}^{c}    \) is open because finite intersections of open sets are open. Also note that \( \bigcap_{n=1}^{\infty} \mathcal{O}_n = \emptyset  \); to see why, suppose otherwise: if \( x \in \bigcap_{n = 1}^{\infty} \mathcal{O}_n \), then since for \( n \geq 1 \) \( \mathcal{O}_n = \mathcal{U}_n \setminus \{ q_n \} \subseteq \mathcal{U}_n, \ x \in \bigcap_{n=1}^{\infty} \mathcal{U}_n  = \mathbb{Q} \), a contradiction, since this means there is a \( k \geq 1 \) such that \( x = q_k \) so that \( x \notin \mathcal{O}_k = \mathcal{U}_k \setminus \{ x \} \implies x \notin \bigcap_{n=1}^{\infty} \mathcal{O}_n.    \)
+
+	To complete the proof, we construct a sequence \( \{ F_j : j \geq 1\}   \) of compact nested intervals.
+	\begin{itemize}
+		\item By construction, \( \mathcal{O}_1 \neq \emptyset  \implies \exists \ x \in \mathcal{O}   _1\). By openness, there exists an \( \varepsilon_1 > 0  \) such that \( (x_1 - \varepsilon_1, x_1 + \varepsilon_1  ) \subseteq \mathcal{O}_1.  \) Thus, \( [x_1 - \frac{\varepsilon_1 }{2}, x_1 + \frac{\varepsilon_1 }{2}] \subseteq (x_1 - \varepsilon_1, x_1 + \varepsilon_1 ) \subseteq \mathcal{O}_1    \). We let \( F_1 \coloneqq  [x_1 - \frac{\varepsilon_1 }{2}, x_1 + \frac{\varepsilon_1 }{2}] \subseteq \mathcal{O} _1\).
+		\item For \( k \geq 1 \), we define \( F_{k+1}  \) as follows. By the density of \( \mathcal{O}_{k+1}   \) in \( \mathbb{R} \), there exists a point \( x_{k+1} \in \mathcal{O}_{k+1}   \) such that \( x_{k+1} \in F_k^{o} .  \) Since a compact interval's interior is non-empty and open, there exists an \( \varepsilon_{k+1}' > 0  \) such that \((x_{k+1} - \varepsilon_{k+1}', x_{k+1} + \varepsilon _{k+1}' ) \subseteq F^{o}_k \subseteq F_k \). By the openness of \( \mathcal{O}_{k+1}   \), there is an \( \varepsilon_{k+1}'' > 0  \) such that \( (x_{k+1} - \varepsilon_{k+1}'', x_{k+1} + \varepsilon _{k+1}'' ) \subseteq \mathcal{O} _{k+1}  \). Letting \( \varepsilon_{k+1} \coloneqq \min \{ \varepsilon_{k+1}', \varepsilon_{k+1}''   \}   \), it follows that \( (x_{k+1} - \varepsilon_{k+1}, x_{k+1} + \varepsilon _{k+1} ) \subseteq F_k, \mathcal{O}_{k+1}    \). Thus, we define \( F_{k+1} \coloneqq [x_{k+1} - \frac{\varepsilon_{k+1}}{2}, x_{k+1} + \frac{\varepsilon _{k+1}}{2}  ] \subseteq F_k, \mathcal{O}_{k+1} .  \)
+		
+		
+	\end{itemize}
+
+\end{proof}
+By construction, each set \( (F_j)_j \) is compact and we have \( F_{1} \supseteq F_2 \supseteq \cdots  \supseteq F_j \supseteq F_{j+1} \supseteq \cdots .   \) Thus, by the nested interval property of \( \mathbb{R} \), there exists an \( x \in \bigcap_{j=1}^{\infty} F_j \). However, by construction, \[x \in  \bigcap_{j=1}^{\infty} F_j \subseteq \bigcap_{n=1}^{\infty} \mathcal{O}_n = \emptyset, \] which holds as \( x \in \bigcap_{j=1}^{\infty} F_j \implies x \in F_j \ \forall j \geq 1 \), so that \( x \in F_1 \implies x \in \mathcal{O}_1  \), and for each \( k \geq 1 \), \( x \in F_{k} \implies x \in \mathcal{O} _{k}  \). Thus, \( x \in \bigcap_{n=1}^{\infty} \mathcal{O} _n \). But this is a contradiction as we have shown \( x \in \emptyset  \). Thus, \( \mathbb{Q}  \) is not a \( G_\delta  \) set.
+\begin{proof}[Lemma 5.1]
+\emph{\(\mathbb{Q}\) is an \( F_\sigma  \) set in \( \mathbb{R} \).} 
+
+Write \(\mathbb{Q}  = \bigcup_{q \in \mathbb{Q} }^{} \{ q \}.\) Since finite sets are closed and \( \mathbb{Q}  \) is countable, \( \mathbb{Q}  \) is an \( F_\sigma  \) set in \( \mathbb{R} \) since it has been written as a countable union of closed sets. \end{proof}

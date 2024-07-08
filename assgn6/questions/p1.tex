@@ -1,0 +1,28 @@
+%! TeX root: ../main.tex
+\noindent \textbf{Definition.} A function \( f : [a, b ] \to \mathbb{R} \) is of \textbf{bounded variation} if \[T_{f} (a,b) \coloneqq\sup_{}\left \{ \sum_{i=1}^{k} |f(x_{i} ) - f(x_{i-1} ) | : a = x_1 < \cdots < x_{k} = b \right \} < \infty.\] 
+\noindent \textbf{Problem 1.} Show that for every pair of functions \( f, g : [a, b] \to \mathbb{R} \) of bounded variation, the functions \( f + g  \) and \( fg \) are of bounded variation on \( [a,b] \). 
+\begin{proof}
+	Let \( a = x_1 < \cdots < x_{k} = b \) be a subdivision of \( [a,b] \). Then
+	\begin{align*}
+		\sum_{i=1}^{k} |(f+g)(x_{i} ) - (f+g)(x_{i - 1} )| &= \sum_{i=1}^{k}|f(x_{i}) + g(x_{i}) - f(x_{i - 1} ) - g(x_{i - 1} ) | \\
+								   &\leq \sum_{i=1}^{k} (|f(x_{i} ) - f(x_{i - 1} )| + |g(x_{i} ) - g(x_{i - 1} )|) \\
+								   &= \sum_{i=1}^{k}|f(x_{i} ) - f(x_{ i - 1} )| +  \sum_{i=1}^{k}|g(x_{i} ) - g(x_{ i - 1} )| \\
+								   &\leq T_{f} (a,b) + T_{g}(a,b) < \infty. 
+	\end{align*}
+Moreover,
+\begin{align*}
+	\sum_{i=1}^{k} |(fg)(x_{i} ) - (fg)(x_{i - 1} )| &= \sum_{i=1}^{k}|f(x_{i} ) g(x_{i} ) - f(x_{i - 1} )g(x_{i - 1} ) | \\
+							 &= \sum_{i=1}^{k}|g(x_{i})(f(x_{i} ) - f(x_{i - 1} )) + f(x_{i - 1})(g(x_{i} ) - g(x_{i - 1} )) | \\
+							 &\leq \sum_{i=1}^{k}|g(x_{i} )(f(x_{i} )-f(x_{i - 1} ))| + \sum_{i=1}^{k}|f(x_{i - 1} )(g(x _{ i } ) - g(x_{i - 1} ))| \\
+							 &\leq \sup_{1 \leq i \leq k}|g(x_{i} )|\sum_{i=1}^{k}|f(x_{i} ) - f(x_{i - 1} )| + \sup_{1 \leq i \leq k}|f(x_{i - 1} )|\sum_{i=1}^{k}|g(x_{i} ) - g(x_i - 1)| \\
+							 &\leq \max_{}\{ \sup_{1 \leq i \leq k}|g(x_{i} )|, \sup_{1 \leq i \leq k}|f(x_{i - 1} )| \}\left ( \sum_{i=1}^{k} |f(x_{i} ) - f(x_{ i -1} )| + \sum_{i=1}^{k}|g(x_{i} ) - g(x_{i - 1} )|\right) \\
+							 &\leq \max_{}\{ \sup_{1 \leq i \leq k}|g(x_{i} )|, \sup_{1 \leq i \leq k}|f(x_{i - 1} )| \}(T_{f}(a,b) + T_{g} (a,b) ) < \infty.
+\end{align*}
+
+
+	Therefore, if \( \ell \coloneqq T_{f+g}(a,b)  \), then for every \( \varepsilon > 0 \) there exists a subdivision \( a = x_1 < \cdots < x_{k} = b \) of \( [a,b] \) such that \[ \ell < \sum_{i=1}^{k} |(f+g )(x_{i} ) - (f+g)(x_{i - 1} )|  + \varepsilon < \infty \] so that \( f + g \) is of bounded variation. Likewise, if \( \j \coloneqq T_{fg} (a,b) \), then there is a subdivision such that \[ \j < \sum_{i=1}^{k}|(fg)(x_{i} ) - (fg)(x_{i - 1} ) | + \varepsilon < \infty.  \]
+	Therefore, \( fg \) is also of bounded variation, thereby completing the proof.
+\end{proof}
+
+
+

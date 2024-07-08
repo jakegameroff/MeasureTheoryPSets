@@ -1,0 +1,16 @@
+%! TeX root: ../main.tex
+\noindent \textbf{Problem 1.} Let \( f \) be integrable over \( \mathbb{R}^{d}  \) and \( \alpha > 0 \). Show that \[\int_{\mathbb{R}^{d} } |f(x)| \ dx = \int_{0} ^{\infty} m(E_{\alpha} ) \ d\alpha,\] where \( E_{\alpha} \coloneqq \{ x \in \mathbb{R}^{d}  : |f(x)| > \alpha \}  \).
+\begin{proof}
+If \( \alpha > 0 \) is fixed, we note that \[\int_{\mathbb{R}^{d} } \chi_{E_{\alpha} } (x) \ dx = m(E_{\alpha} ),\] which holds by the definition of the Lebesgue integral of a characteristic function. From which it follows that
+\begin{align*}
+	\int_{0} ^{\infty} m(E_{\alpha} ) \ d \alpha &= \int_{0} ^{\infty} \left ( {\int_{\mathbb{R}^{d} } \chi_{E_{\alpha} (x)} \ dx} \right )d\alpha.
+\end{align}
+Then, since characteristic functions are integrable, Fubini's theorem yields \[\int_{0}^{\infty} \left ( {\int_{\mathbb{R}^{d} } } \chi_{E_{\alpha} } (x) \ dx \right ) d \alpha = \int_{\mathbb{R}^{d} } \left ( {\int_{0} ^{\infty} \chi_{E_{\alpha} } (x) \ d \alpha} \right ) d x = \int_{\mathbb{R}^{d} } \left ( {\int_{0} ^{|f(x)|} \chi_{E_{\alpha} }(x) \ d \alpha + \int_{|f(x)|} ^{\infty} \chi_{E_{\alpha} } (x) \ d \alpha } \right ) d x, \] breaking up the interval over which we integrate. Since \( x \in E_{\alpha}  \) if and only if \( |f(x)| > \alpha \) by definition, if \( |f(x)| \leq \alpha \) then \( \chi_{E_{\alpha} } (x) = 0 \). Thus, since \( x \) is fixed, \( \int_{|f(x)|} ^{\infty} \chi_{E_{\alpha} } (x) \ d \alpha = \int_{|f(x)|} ^{\infty} 0 \ d \alpha= 0 \) (since \( |f(x)| \leq \alpha \) always). Furthermore, we have
+\begin{align*}
+	\int_{0} ^{|f(x)|} \chi_{E_{\alpha} } (x) \ d \alpha &= \int_{[0, |f(x)|)} \chi_{E_{\alpha} }(x) \ d \alpha \tag{remove \( |f(x)| \) from interval as \( m(\{ |f(x)| \} ) = 0 \)} \\
+							     &= \int_{[0,|f(x)|)} 1 \ d \alpha \tag{as \( |f(x)| > \alpha \) for \( \alpha \in [0, |f(x)|) \)} \\
+							     &= \int_{[0, |f(x)|)} \chi_{[0, |f(x)|)} (\alpha) \ d \alpha \\
+							     &= m([0, |f(x)|)) = |f(x)| - 0 = |f(x)|,
+\end{align*}
+by definition of the Lebesgue integral of a characteristic function. Thus, \[\int_{0} ^{\infty} m(E_{\alpha} ) \ d \alpha= \int_{\mathbb{R}^{d} } \left ( {\int_{0} ^{|f(x)|} \chi_{E_{\alpha} }(x) } \ d \alpha + \int_{|f(x)|} ^{\infty} \chi_{E_{\alpha} (x)} \ d \alpha  \right ) dx = \int_{\mathbb{R}^{d} } |f(x)| \ d x. \] Therefore, \( \int_{\mathbb{R}^{d} } |f(x)| \ dx = \int_{0} ^{\infty} m(E_{\alpha} ) \ d \alpha \) completes the proof.
+\end{proof}

@@ -1,0 +1,26 @@
+%! TeX root: ../main.tex
+\noindent \textbf{Problem 5.} Let \( (f_{k} )_{k \in \mathbb{N} } \) be a sequence of integrable functions over \( A \subseteq \mathbb{R} \) which converges pointwise almost everywhere in \( A \) to a function \( f \) which is also integrable over \( A \). Show that \[ \lim_{{k} \to {\infty}} \int_{A} |f_{k} - f| = 0 \iff \lim_{{k} \to {\infty}} \int_{A} |f_{k}| = \int_{A} |f|.   \] \emph{Hint. If may be useful to consider the functions \( g _{k } = |f_{k} | + |f | - |f_{k} - f|. \)} \\
+
+\noindent \textbf{Proof.} \\
+For ``$\Rightarrow$", suppose \( \lim_{{k} \to {\infty}} \int_{A} |f_{k} - f| = 0 \) and let \( \varepsilon > 0 \). To show that \[\lim_{{k} \to {\infty}} \int_{A} |f_{k}| = \int_{A} |f|, \] we must find an \( N \in \mathbb{N}  \) such that for all \( m \geq N \), \[\left | {\int_{A} |f| - \int_{A} |f_m|} \right | < \varepsilon .\] Since \( \lim_{{k} \to {\infty}} \int_{A} |f_{k} - f| = 0 \), there exists an \( N \in \mathbb{N}  \) such that for all \( m \geq N \), we have \( \int_{A} |f_{m} - f| < \varepsilon  \). But notice that
+\begin{align*}
+	\left | {\int_{A} |f| - \int_{A} |f_{n}| } \right |  &= \left | {\int_{A} (|f| - |f_{m}| )} \right | \tag{linearity} \\
+							     &\leq \int_{A} \left | {|f| - |f_{m} |} \right | \tag{\( |\int_{A} f| \leq \int_{A} |f| \)} \\
+							     &\leq \int_{A} |f - f_{m} | < \varepsilon,
+\end{align*}
+by monotonicity since \( ||a|-|b|| \leq |a-b| \) for \( a,b \in \mathbb{R} \) by the triangle inequality. Since \( \varepsilon  \) was arbitrary, we conclude that \[\lim_{{k} \to {\infty}} \int_{A} |f_{k} | = \int_{A} |f|.\]
+
+\noindent For ``$\Leftarrow$", let \( N = \{ x \in A : f_{k} (x) \not\to f(x) \}. \) It suffices to show that \[\limsup_{k \to \infty} \int_{A \setminus N} |f_{k} - f| \leq 0 \tag{$\ast$}. \] Indeed, we already know that \[\liminf_{k \to \infty} \int_{A\setminus N} |f_{k} - f| \leq \limsup _{k \to \infty} \int_{A\setminus N} |f_{k} - f| \tag{5.1}\] holds in general; and by Fatou's lemma (since \( |f_{k} | \) is non-negative) \[\int_{A \setminus N} \liminf_{k \to \infty} |f_{k}  - f | = \int_{A \setminus N} 0 = 0 \leq \liminf_{k \to \infty} \int_{A \setminus N} |f_{k} - f|, \tag{5.2}    \] where \( \liminf_{k \to \infty} |f_{k} - f| = 0  \) since \( f_{k} \to f \) everywhere in \( A \setminus N\). Combining (5.1) and (5.2), we attain that \[\liminf_{k\to \infty} \int_{A\setminus N} |f_{k}  - f | \leq \limsup_{k \to \infty} \int_{A\setminus N} |f_{k} - f| \leq 0 \leq \liminf _{k \to \infty} \int_{A \setminus N} |f_{k} - f| \leq \limsup_{k \to \infty} \int_{A \setminus N} |f_{k} - f| \] so that \( \liminf_{k \to \infty} \int_{A \setminus N} |f_{k} - f| = \limsup_{k \to \infty} \int_{A \setminus N} |f_{k} - f| = 0 \). Thus, since \( N \) has measure 0, it would follow that \[\liminf_{k \to \infty} \int_{A \setminus N} |f_{k} - f| = 0 \leq \lim_{{k} \to {\infty}} \int_{A \setminus N} |f_{k} - f| = \lim_{{k} \to {\infty}} \int_{A} |f_{k} - f| \leq 0 = \limsup_{k \to \infty} \int_{A \setminus N} |f_{k} - f|\] so that \( \lim_{{k} \to {\infty}} \int_{A} |f_{k} - f| = 0 \) as required. Thus, we prove \((\ast)\) now to complete the proof.
+
+Following the hint, for each \( k \in \mathbb{N}  \) we define \( g_{k} \coloneqq |f_{k} | + |f| -|f_{k} - f| \). Since \( |a+b| \leq |a| + |b| \) for each \( a,b \in \mathbb{R} \) (triangle inequality), \( |f_{k} | + |f| \geq |f_{k} - f|\) so that \( g_{k} \geq 0 \) on \( A \). Since \( \lim_{{k} \to {\infty}} \int_{A} |f_{k} | = \lim_{{k} \to {\infty}} \int_{A\setminus N} |f_{k} | = \int_{A} |f| = \int_{A \setminus N} |f|\), we have also that \( \liminf _{k \to \infty} \int_{A} |f_{k}| =  \liminf _{k \to \infty} \int_{A \setminus N} |f_{k} | = \int_{A} |f| =  \int_{A\setminus N} |f| \); so, using this, we obtain via Fatou's lemma that
+\begin{align*}
+	\int_{A \setminus N} \liminf_{k\to \infty} g_{k}  &= \int_{A \setminus N} (|f| + \liminf_{k \to \infty} (|f_{k} | - |f_{k} - f|) ) \\
+							  &= \int_{A \setminus N} (|f| + |f| + 0) \tag{\( f_{k} \to f \) in \( A \)}  \\
+							  &= 2 \int_{A \setminus N} |f| \tag{by linearity} \\
+							  &\leq \liminf_{k \to \infty} \int_{A\setminus N} g_{k} \\
+							  &= \liminf_{k\to \infty} \left ( {\int_{A\setminus N} |f| + \int_{A\setminus N} |f_{k}| - \int_{A \setminus N} |f_{k} - f|} \right ) \tag {by linearity}\\
+							  &= \liminf_{k \to \infty} \int_{A \setminus N} |f| + \liminf_{k \to \infty} \int_{A\setminus N} |f_{k} |+ \liminf_{k \to \infty} \left(-\int_{A \setminus N} |f_{k} - f|\right ) \\
+							  &= 2 \int_{A \setminus N} |f| + \liminf_{k \to \infty} \left ( -\int_{A \setminus N} |f_{k} - f|\right).
+\end{align*}
+Thus, it follows that \[\liminf_{k \to \infty} \left ( - \int_{A \setminus N} |f_{k} - f| \right) \geq 0 \iff -\liminf_{k \to \infty} \left( - \int_{A \setminus N} |f_{k} - f| \right ) = \limsup_{k \to \infty} \int_{A \setminus N} |f_{k} - f| \leq 0, \] since \( -\liminf_{k \to \infty} (-x_{k} ) = \limsup_{k \to \infty} x_{n}   \) for any sequence \( x_{n}  \) of reals. Thus, this proves \((\ast)\) and hence completes the proof.   \qed
+

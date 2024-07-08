@@ -1,0 +1,48 @@
+%! TeX root: ../main.tex
+\noindent \underline{\textbf{Problem 4}}
+\begin{enumerate}
+	\item Show that a strictly increasing function that is defined on an interval has a continuous inverse.
+	\item Let \( A \) and \( B \) be two Borel sets of \( \mathbb{R} \) and \( f : A \to \mathbb{R} \) be a continuous function. Show that \( f^{-1}(B)  \) is a Borel set.
+
+		\emph{Hint. Show that the collection of sets \( B \) where \( f^{-1} (B) \) is Borel is a \(\sigma\)-algebra containing the open sets.} 
+	\item Use (1) and (2) to show that a strictly increasing continuous function defined on an interval maps Borel sets to Borel sets.	
+\end{enumerate}
+\begin{proof}[Proof of 1]
+	Let \( f : I \to \mathbb{R} \) be a strictly increasing function, where \( I \) is some interval. This means that for any \( x, y \in I \) with \( x < y \), \( f(x) < f(y). \) Define \[f^{-1}  : f(I) \to I  \mbox{ by }  f(i) \xmapsto{f^{-1} } i,\] for \( i \in I\) (this function is well-defined by injectivity, which we prove in footnote 3). We show that \( f^{-1}  \) is continuous by showing that if \( \mathcal{O} \subseteq I \) is open, then its pre-image \( (f^{-1})^{-1}  (\mathcal{O} )  \) is open. But notice that if \( f(x) \in (f^{-1})^{-1} (\mathcal{O} ) \iff f^{-1}(f(x)) \in \mathcal{O}  \iff  x \in \mathcal{O} \iff f(x) \in f(\mathcal{O} ) \), where the second to last \( \iff  \) holds since \( f \)  is injective.\footnote{\( f \) is clearly injective as if \( x, y \in I \) are such that \( x\neq y \implies x < y \) or \( x>y \); in either case, \( f(x) < f(y) \) or \( f(x) > f(y) \) respectively, so that \( f(x) \neq f(y) \), as needed. Of course, \( \mathcal{O } \subseteq f^{-1}(f(\mathcal{O} ))  \), since if \( x \in \mathcal{O} \implies f(x) \in f(\mathcal{O}) \implies  x \in f^{-1}(f(\mathcal{O} ))   \). Conversely, suppose \( x \in f^{-1}(f(\mathcal{O} )) \implies f(x) \in f(\mathcal{O} ). \) Thus, there exists an \( o \in \mathcal{O}  \) such that \( f(x) = f(o) \implies x = o \) by injectivity so that \( x \in \mathcal{O}  \) as required.} This means that \( (f^{-1})^{-1}(\mathcal{O} ) = f(\mathcal{O})   \), as these sets are subsets of each other. Thus, to show that \( f^{-1}  \) is continuous, it suffices to show that for any open subset \( \mathcal{O} \subseteq I \), \( f(\mathcal{O} ) \) is open.
+
+	To this end, let \( \mathcal{O} \subseteq I \) be any open set, with \( x \in \mathcal{O}  \). Then there exists an \( \varepsilon > 0 \) such that \( V_\varepsilon (x) = (x - \varepsilon , x+ \varepsilon ) \subseteq \mathcal{O}  \). Then \( f(V_\varepsilon (x))  \subseteq f(\mathcal{O} ) \); but notice that for any \( y \in V_\varepsilon (x) \), \( f(y) \in f(V_\varepsilon (x)) \implies  f(x - \varepsilon ) < f(y) < f(x+ \varepsilon ) \), since \( f \) is strictly increasing. Thus, \(f(x) \in (f(x-\varepsilon ), f(x+\varepsilon )) \subseteq f(\mathcal{O} )\), an open interval, hence we conclude that \( f(\mathcal{O} ) \) is open.
+
+	Thus, we have shown that the preimages of open sets under \( f^{-1}  \) are open. Equivalently, this means that \( f\) has a continuous inverse, as was to be shown.
+\end{proof}
+\begin{proof}[Proof of 2]
+Let \( A, B \subseteq \mathbb{R} \) be two Borel sets and \( f: A \to \mathbb{R} \) be a continuous function. We now use lemma 4.1 to complete the proof.
+
+By definition, the Borel \(\sigma\)-algebra is the intersection of all \(\sigma\)-algebras containing the open sets in \( \mathbb{R}^{d}  \) (\( d = 1 \) in this case). Lemma 4.1 implies that \( \Omega \), the \(\sigma\)-algebra of sets \( B \) such that \( f^{-1}(B)  \) is a Borel set is a \(\sigma\)-algebra containing the open sets. Thus, the Borel \(\sigma\)-algebra is a subset of \( \Omega \), since the Borel \(\sigma\)-algebra is the smallest \(\sigma\)-algebra containing the open sets by definition. Hence, if \( B \) is a Borel set, then \( B \in \Omega \), which means that \( f^{-1}(B) \) is a Borel set. Since \( B \) was arbitrary, the proof is complete.
+\end{proof}
+\begin{proof}[Proof of 3]
+
+Let \( f : I \to \mathbb{R} \) be a strictly increasing continuous function, where \( I \) is an interval. Let \( B \subseteq I \) be any Borel set. We must show that \( f(B) \) is a Borel set.
+
+Since \( f \) is strictly increasing, by (1) we have that \( f^{-1} : f(I) \to I  \) is continuous, where \( f^{-1}(f(i)) = i \) for \( i \in I \). Note also that since \( f \) is strictly increasing, \( f(I) \) is an interval since \( I \) is. Hence, by lemma 4.2, \( f(I) \) is a Borel set. Define \( g : f(I) \to \mathbb{R} \), where \( g(f(i)) = f^{-1}(f(i))  \) for each \( i \in I \). Then \( g \) is also continuous, since \( g(x) = f^{-1}(x)  \) for each \( x \in f(I) \) (i.e. we just extended the codomain of \( f^{-1}  \)). Thus, by (2), \( g^{-1}(B) = (f^{-1})^{-1}(B)  \) is a Borel set. But \( (f^{-1})^{-1}(B) = f(B)  \). Indeed, we showed that this is true in (1), since \( f \) is injective. Thus, \( f(B) \) is a Borel set, as needed.
+\end{proof}
+\begin{proof}[Lemma 4.1]
+	\emph{Let \( A \subseteq \mathbb{R} \) be a Borel set and \( f: A \to \mathbb{R} \) be a continuous function. Then the collection of sets \( B \) where \( f^{-1}(B) \) is a Borel set is a \(\sigma\)-algebra containing the open sets.}
+
+	Denote this collection of such sets \( B \) by \( \Omega. \) \( \mathbb{R} \in \Omega \) since \( f^{-1}(\mathbb{R}) = A  \) is a Borel set. Suppose \( E,F \in \Omega \); then both \( f^{-1}(E), f^{-1}(F)   \) are Borel sets so that \( f^{-1}(F) \setminus f^{-1}(E)   \) is a Borel set (since \( f^{-1}(E),f^{-1}(F) \) are in the Borel \(\sigma\)-algebra), yet \( f^{-1} (F) \setminus f^{-1}(E) = f^{-1}(F \setminus E)  \) so that \( F \setminus E \in \Omega. \)\footnote{Indeed, \( x \in f^{-1}(F) \setminus f^{-1}(E)  \iff f(x) \in F, f(x) \notin E \iff f(x) \in F\setminus E \iff x \in f^{-1}(F\setminus E) \).} Finally, if \( \{ A_k \}_{k \in \mathbb{N} } \subseteq \Omega \), then \( \{ f^{-1}(A_k)  \}_{k \in \mathbb{N} }   \) is a sequence of Borel sets so that \[ \bigcup_{k=1}^{\infty} f^{-1}(A_k) = f^{-1}\left ( {\bigcup_{k=1}^{\infty} A_k} \right )    \] is a Borel set (as each \( A_k \) belongs to the Borel \(\sigma\)-algebra) so that \( \bigcup_{k=1}^{\infty} A_k \in \Omega \).\footnote{Certainly, \( x \in \bigcup_{k=1}^{\infty} f^{-1}( A_k) \iff \exists \ m \geq 1 : x \in f^{-1}(A_m) \iff \exists \ m \geq 1 : f(x) \in A_m \iff f(x) \in \bigcup_{k=1}^{\infty} A_k \iff x \in f^{-1}(\bigcup_{k=1}^{\infty} A_k)  \).} Thus \( \Omega \) is a \(\sigma\)-algebra and it remains to be shown that if \( \mathcal{O} \subseteq \mathbb{R} \) is an open set, then \( \mathcal{O} \in \Omega \). But this is clear: by the continuity of \( f \), \( f^{-1} (\mathcal{O} ) \) is open and hence a Borel set so that \( \mathcal{O} \in \Omega \) as required, completing the lemma.
+\end{proof}
+
+\begin{proof}[Lemma 4.2]
+\emph{Let \( I \subseteq \mathbb{R} \) be any interval. Then \( I \) is a Borel set.}
+
+To prove this lemma, we use the following two facts:
+\begin{enumerate}
+	\item \emph{Singleton sets are Borel sets.} Let \( a \in \mathbb{R} \). Then \( \{ a \}  \) is closed so that \( \{ a \} ^{c}  \) is open and hence a Borel set. Thus, \( \mathbb{R} \setminus \{ a \} ^{c} = \{ a \}  \) is a Borel set by the difference property of the Borel \(\sigma\)-algebra.
+	\item \emph{Finite unions of Borel sets are Borel sets.} This follows immediately from the countable-union property of the Borel \(\sigma\)-algebra, i.e. if \( A_1, \hdots , A_N \) are Borel sets for some \( N \in \mathbb{N}  \), then \(A_1\cup A_2 \cup \cdots \cup A_N =  \bigcup_{i=1}^{\infty} B_i\), where \( 1 \leq i \leq N \implies B_i = A_i \) and \( i > N \implies B_i = \emptyset  \) is a Borel set, since countable unions of Borel sets are Borel sets.
+\end{enumerate}
+Now, we have the following cases. Let \( a , b \in \mathbb{R} \) with \( a < b \).
+\begin{enumerate}
+	\item If \( I = \mathbb{R} \) then \( I \) is a Borel set by definition of the Borel \(\sigma\)-algebra. If \( I = (-\infty, b) \) or \( (a, \infty) \), then \( I \) is open and hence a Borel set. If \( I = (-\infty, b] \) or \( I = [a, \infty) \), then facts 1 and 2 imply that \( I = (-\infty, b) \cup \{ b \}  \) and \( I = (a, \infty) \cup \{ a \}  \) are Borel sets.
+	\item \( I = [a,b] = \{ a \} \cup (a,b) \cup \{ b \} \), or \(I =  (a,b] = (a,b) \cup \{ b \} \), or \( I = [a,b) = \{ a \} \cup (a,b) \). In all of these cases, facts 1 and 2 imply that \( I \) is a Borel set.
+\end{enumerate}
+Since we have covered all possible cases, we conclude that \( I \) is a Borel set.
+\end{proof}

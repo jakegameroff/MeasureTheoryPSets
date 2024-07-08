@@ -1,0 +1,31 @@
+%! TeX root: ../main.tex
+\begin{proof}[Proof of 3.2 (b).]
+	We show that for a.e. \( x \in F \), \( I(x) < \infty \). We start by noting that \( I(x) = \int_{\mathbb{R}} \frac{d(y,F)}{|x-y|^{2} } \ dy = \int_{F} \frac{d(y,F)}{|x-y|^{2} } \ dy + \int_{\mathbb{R} \setminus F} \frac{d(y, F)}{|x-y|^{2} } \ dy = \int_{\mathbb{R} \setminus F} \frac{d(y,F)}{|x-y|^{2} }  \ dy \), since for \( y \in F \), \( d(y, F) = |y-y| = 0 \) so that \( \int_{F} \frac{d(y,F)}{|x-y|^{2} }  \ dy= \int_{F} 0 \ dy= 0 \). By lecture, we know that if a function \( f \) is integrable over \( A \subseteq \mathbb{R}^{d}  \), then \( f(x) < \infty \) for a.e. \( x \in A \). Thus, it suffices to show that \( \int_{F} I(x) \ dx < \infty \). Since \( \int_{F} I(x) \ dx = \int_{F \times \mathbb{R} \setminus F} f \) (where \( f : \mathbb{R} \times \mathbb{R} \to \mathbb{R} \) is given by \( f(x,y) = \frac{d(y,F)}{|x-y|^{2} }  \)), and \( f \geq 0 \) everywhere and is measurable\footnote{Firstly, \( f \geq 0 \) on \( \mathbb{R}^{2}  \) as \( d(y,F), |x-y|^{2}  \geq 0 \). Secondly, \( f \) is measurable; indeed, using (1) \( d(\cdot , F) \) is Lipschitz continuous (and hence continuous) and finite-valued so that it is measurable and \( 1/|x-y|^{2}  \) is continuous for every \( x,y \in \mathbb{R}^{2}  \) such that \( x \neq  y \), i.e. the set of discontinuities is \( \Gamma \coloneqq \{ (x,y) \in \mathbb{R} \times \mathbb{R}  :  y = \mbox{id}(x)  \}  \). Since the identity function is measurable, using (2) \( \Gamma \) has measure 0. Thus, \( 1/|x-y|^{2}  \) is continuous almost everywhere and finite-valued and hence measurable by lecture. Since these functions are finite valued and since the product of measurable functions is measurable, \( f = d(y,F)\cdot \frac{1}{|x-y|^{2} }  \) is measurable as needed.}, we can swap the integrals using Tonelli's theorem to obtain
+\begin{align*}
+	\int_{F} I(x) \ dx &= \int_{F} \left ( {\int_{\mathbb{R} \setminus F}  \frac{d(y,F)}{|x-y|^{2} } \ dy } \right ) dx = \int_{\mathbb{R} \setminus F} \left ( {\int_{F} \frac{d(y,F)}{|x-y|^{2} } \ dx} \right ) dy \\
+			   &= \int_{\mathbb{R}\setminus F} \left ( d(y,F) \int_{F} \frac{1}{|x-y|^{2} } \ dx \right ) dy. \tag{$\ast$}
+\end{align*}
+Now, following the hint, note that for every \( y \in \mathbb{R} \setminus F \), \( F \cap (y - d(y,F), y + d(y,F)) = \emptyset  \). Indeed, if \( x \in F \), then \( d(y, F) \leq |x - y| \) so that \( x \notin (y - d(y,F), y+ d(y,F)) \). Thus, \( F \subseteq (-\infty, y - d(y, F)) \cup (y+d(y,F), \infty) \) so that
+\begin{align*}
+	\int_{F} \frac{1}{|x-y|^{2} } \ dx &\leq \int_{-\infty} ^{y - d(y,F)} \frac{1}{|x-y|^{2} }  \ dx +  \int_{y+d(y,F)} ^{\infty} \frac{1}{|x-y|^{2} } \ dx \\
+					   &= \int_{-\infty} ^{-d(y,F)} \frac{1}{x^{2} } \ dx + \int_{d(y,F)} ^{\infty} \frac{1}{x^{2} } \ dx,  
+\end{align*}
+again using Question 1 of Assignment 4 as we did above: for every \( x \in (-\infty, y - d(y,F)] \cup [y + d(y, F), \infty ) \), if \( f(x) = \frac{1}{|x-y|^{2} }  \) then define for \( x \in (-\infty, - d(y,F)] \cup [ d(y, F), \infty )  \) \( f_{y} (x) = f(x + y) = \frac{1}{|x+y-y|^{2} } = \frac{1}{x^{2} }  \).
+
+Since \( 1/x^{2}  \) is Reimann integrable (as it is continuous) and bounded on \( [t, -d(y,F)] \) and \( [d(y,F), t] \) for any fixed \( t \), we can evaluate these integrals as Reimann integrals:
+\begin{align*}
+	\int_{F} \frac{1}{|x-y|^{2} } \ dx &\leq \int_{-\infty} ^{-d(y,F)} \frac{1}{x^{2} } \ dx + \int_{d(y,F)} ^{\infty} \frac{1}{x^{2} } \ dx \\
+					   &= \lim_{{t} \to {-\infty}} \int_{t} ^{-d(y,F)} \frac{1}{x^{2} } \ dx + \lim_{{t} \to {\infty}} \int_{d(y,F)} ^{t} \frac{1}{x^{2} } \ dx \\ 
+					   &= \lim_{{t} \to {-\infty}} \left ( {\int_{[t, -d(y,F)]} } \frac{1}{x^{2} } \ dx  \right ) + \lim_{{t} \to {\infty}} \left ( {\int_{[d(y,F), t]} } \frac{1}{x^{2} }  \ dx \right ) \tag{add endpoints as finite sets have measure 0} \\
+				       &= \lim_{{t} \to {-\infty}} \int_{t} ^{-d(y,F)} x^{-2} \ dx + \lim_{{t} \to {\infty}} \int_{d(y,F)} ^{t} x^{-2} \ dx \\
+				       &= \lim_{{t} \to {-\infty}} \left [ \frac{-1}{x}  \right]_{t}^{-d(y,F)} +  \lim_{{t} \to {\infty}} \left [ \frac{-1}{x}  \right]_{d(y,F)}^{t} \\
+				       &= \frac{1}{d(y,F)} + \lim_{{t} \to {-\infty}} \frac{1}{t} + \lim_{{t} \to {\infty}} \frac{-1}{t} + \frac{1}{d(y,F)} \\
+				       &= \frac{2}{d(y,F)}. 
+\end{align*}
+Now, applying this result to \((\ast)\) yields
+\begin{align*}
+	\int_{F} I(x) \ dx &= \int_{\mathbb{R}\setminus F} \left ( d(y,F) \int_{F} \frac{1}{|x-y|^{2} } \ dx \right ) dy \leq \int_{\mathbb{R} \setminus F} d(y,F)\frac{2}{d(y,F)} \ dy \\
+		      &= 2 \int_{\mathbb{R} \setminus F} \chi_{\mathbb{R} \setminus F} \ dy = 2m(\mathbb{R}\setminus F) < \infty,  
+\end{align*}
+which holds by the hypothesis that the complement of \( F \) has finite measure and by definition of the Lebesgue integral of a characteristic function. Therefore, \( \int_{F} I(x) \ dx < \infty \) implies that for almost every \( x \in F \), \( I(x) < \infty \), thus the proof is complete.
+\end{proof}

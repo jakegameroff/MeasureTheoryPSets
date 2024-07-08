@@ -1,0 +1,84 @@
+%! TeX root: ../main.tex
+\noindent \textbf{Problem 3.} Let \( f : \mathbb{R}^{d} \to \mathbb{R} \) be measurable, non-negative on \( \mathbb{R}^{d}  \), and finite almost everywhere. For each \( k \in \mathbb{Z}  \), let \( F_k \coloneqq \{ x : 2^{k} < f(x) \leq 2^{k+1}  \}  \).
+\begin{enumerate}
+	\item Show that \( f \) is integrable on \( \mathbb{R}^{d}  \) if and only if \( \sum_{k=-\infty}^{\infty} 2^{k} m(F_k) < \infty \).
+	\item Use (1) to verify that \[f(x) \coloneqq \begin{cases}
+		|x|^{-a}  & |x| \leq 1 \\
+		0 & \mbox{otherwise}
+	\end{cases}\] is integrable over \( \mathbb{R}^{d}  \) if and only if \( a < d \).
+	\item Use (1) to verify that \[g(x) \coloneqq \begin{cases}
+		|x|^{-b}  & |x| > 1 \\
+		0 & \mbox{otherwise}
+	\end{cases}\] is integrable over \( \mathbb{R}^{d}  \) if and only if \( b > d \).
+	
+
+	
+	
+\end{enumerate}
+Note that \( |x| = \sqrt{x_1^{2} + \cdots + x_d^{2} }  \) for all \( x \in (x_1, \hdots ,x_d) \in \mathbb{R}^{d}  \). \\
+
+\noindent \textbf{Proof of 3.1.}
+
+\noindent For ``$\Rightarrow$", suppose \( f \) is integrable on \( \mathbb{R}^{d}  \). Let \( \varphi \coloneqq \sum_{k=-\infty}^{\infty}2^{k} \chi_{F_{k} }  \). Then it is clear by the definition of \( F_{k}  \) that for \( k \in \mathbb{Z}  \) the \( F_{k}  \)'s are mutually disjoint.\footnote{Indeed, if \( x \in F_{i} \cap F_{j}  \) for \( i,j \in \mathbb{Z}  \) then \( x \in f ^{-1} ((2^{i} , 2^{i+1} ])  \) and \( x \in f ^{-1} ((2^{j} , 2^{j+1} ])  \). Thus \( f(x) \in (2^{i} , 2^{i+1} ] \cap (2^{j}, 2^{j+1}]   \). Suppose towards a contradiction that \( i \neq j \); without loss of generality, take \( i < j \). Then \( 2^{i+1} < 2^{i+2} \leq 2^{j}   \) implies that \( f(x) \in (2^{i} , 2^{i+1}] \cap (2^{j} , 2^{j+1} ] = \emptyset   \), a contradiction.} We note that \( F_{-\infty} = \{ x : 0 < f(x) \leq 0 \} = \emptyset  \) and \( F_{\infty} = \{ x : \infty< f(x) \leq \infty \} = \emptyset  \) as well; thus, we write \( \sum_{k=-\infty}^{\infty}2^{k} m(F_{k} ) = \sum_{k \in \mathbb{Z} }^{}2^{k} m(F_{k} ) \), since \( m(\emptyset ) = 0 \).
+
+Let \( x \in \mathbb{R}^{d}  \) be arbitrary. If there does not exist a \( k \) for which \( x \in F_{k}  \), then \( \varphi (x) = 0 \leq f(x)\) by non-negativity. Otherwise, there is a unique \( F_{k}  \) containing \( x \) so that \( \varphi (x) = 2^{k} < f(x)  \) by definition of \( F_{k}  \). Thus, \( \varphi \leq f \) on \( \mathbb{R}^{d}  \) so that by monotonicity, \[ \int_{} \varphi \leq \int_{} f < \infty.\tag{3.1}\] Notice that by Lemma 3.1, since \( 2^{k} > 0 \) for every \( k \in \mathbb{Z}  \), \[\int_{} \varphi = \int_{} \sum_{k \in \mathbb{Z} }^{}2^{k}\chi_{F_{k} } = \sum_{k \in \mathbb{Z} }^{} \int_{} 2^{k} \chi_{F_{k} } = \sum_{k \in \mathbb{Z} }^{}2^{k} \int_{} \chi_{F_{k} } = \sum_{k \in \mathbb{Z} }^{} 2^{k} m(F_{k} ) = \sum_{k=-\infty}^{\infty}2^{k}m(F_{k}) \leq \int_{} f < \infty  ,    \] using \((3.1)\), linearity, and the definition of the integral of a characteristic function. Thus, we have that \( \sum_{k=-\infty}^{\infty} 2^{k} m(F_{k} ) < \infty \), completing the forward implication. \\
+
+\noindent On the other hand, for \( ``$\Leftarrow$" \), suppose \( \sum_{k=-\infty}^{\infty} 2^{k} m(F_{k} ) = \sum_{k \in \mathbb{Z} }^{}2^{k} m(F_{k} ) < \infty \). Then \[2 \sum_{k=-\infty}^{\infty} 2^{k}m(F_{k}) = \sum_{k \in \mathbb{Z} }^{} 2^{k+1} m(F_{k}) < \infty.  \tag{3.2}  \] Define \( \psi \coloneqq \sum_{k \in \mathbb{Z} }^{} 2^{k+1}\chi_{F_{k} }   \). It follows for almost every \( x \in \mathbb{R}^{d}  \), \( \psi \leq f \). Indeed, for \( x \in \mathbb{R}^{d}  \), if there is no \( k \) such that \( x \in F_{k}  \), then \( f (x) = \infty \) or \(f(x) = 0 \) (such holds as \( (0,\infty) = \bigcup_{k \in \mathbb{Z} }^{} (2^{k}, 2^{k+1}] \subseteq [0,\infty],   \) which is the image of \( f \)). Since \( f \) is finite almost everywhere, we need not consider such \( x \) for which \( f(x) = \infty \); and if \( f(x) = 0 \) then \( \psi (x) = 0 = f(x) \) as needed. On the other hand, if there is an \( F_{k}  \) containing \( x \), by disjointness \( F_{k}  \) is unique so that \( \psi (x) = 2^{k+1} \geq f(x)  \) by definition of \( F_{k}  \). Thus, by monotonicity, \[\int_{}f \leq \int_{} \psi. \tag{3.3}\] Again, using Lemma 3.1, since \( 2^{k+1} > 0 \) for \( k \in \mathbb{Z}  \), we must have that \[\int_{} \psi = \int_{} \sum_{k \in \mathbb{Z} }^{} 2^{k+1} \chi_{F_{k} } = \sum_{k \in \mathbb{Z} }^{} \int_{} 2^{k+1} \chi_{F_{k} } = \sum_{k \in \mathbb{Z} }^{}2^{k+1} \int_{} \chi_{F_{k} } = \sum_{k \in \mathbb{Z} }^{}2^{k+1} m(F_{k} ) < \infty,  \] using (3.2), linearity, and the definition of the integral of a characteristic function. Thus, using \( (3.3) \), we conclude that \( f \) is integrable since \[\int_{} f \leq \int_{} \psi = \sum_{k \in \mathbb{Z} }^{}2^{k+1} m(F_{k} ) < \infty,\] thereby completing the proof.\qed \\
+
+\noindent \textbf{Proof of 3.2.}
+
+\noindent We first handle the trivial case where \( a \leq 0 \). Then \( a < d \) is a tautology as \( d \geq 1 \) so that \( f \) integrable \( \implies  \) \( a < d \). On the other hand, we now show that \( f \) is integrable whenever \( a \leq 0 < d \). Let \( k \coloneqq |a| \) and note that for \( x \in \overline{B(0,1)} \), \( |x| \leq 1 \implies |x|^{k-1} \leq 1 \implies |x|^{k} \leq |x| \leq 1  \) so that by monotonicity and the disjointness of a set with its complement, \[\int_{\mathbb{R}^{d} } f = \underbrace{ \int_{\mathbb{R}^{d} \setminus \overline{B(0,1)}} f}_{=0}  + \int_{\overline{B(0,1)}} f = \int_{\overline{B(0,1)}} |x|^{k} \leq \int_{\overline{B(0,1)}} 1 = \int_{\overline{B(0,1)}} \chi_{\overline{B(0,1)}} = m(\overline{B(0,1)}) < \infty   \] so that \( f \) is integrable as needed.
+
+We now suppose that \( a > 0 \) and commence by noting that
+\begin{align*}
+	x \in F_{k}  &\iff f(x) \in (2^{k} , 2^{k+1} ] \iff  0 < 2^{k} < |x|^{-a} \leq 2^{k+1}  \mbox{ and } |x| \leq 1 \\
+		     &\iff 0<2^{k} <|x|^{-a} \leq 2^{k+1} \mbox{ and } x \in \overline{B(0,1)}
+\end{align*}
+so that \[F_{k} = \{ x \in \overline{B(0,1)} : 2^{k} < |x|^{-a} \leq 2^{k+1}  \}. \] We must calculate \( m(F_{k} ) \) for each \( k \in \mathbb{Z}  \). Notice that if \( k \in \mathbb{Z} \) then any \( x \in \overline{B(0,1)} \) satisfies \( x \in F_{k}  \) if and only if
+\begin{align*}
+	2^{k} < |x|^{-a} \leq 2^{k+1}  &\iff 2^{k} < \left ( {\frac{1}{|x|} } \right )^{a} \leq 2^{k+1} \iff 2^{k/a} < \frac{1}{|x|} \leq 2^{\frac{k+1}{a} } \\
+				       &\iff 2^{-k/a} > |x| \geq 2^{-\frac{k+1}{a} }.
+\end{align*}
+For \( k \geq 0 \) we have \( F_{k} = B(0, 2^{-k/a} ) \setminus B(0, 2^{-\frac{k+1}{a} } ) \). Indeed, \( B(0, 2^{-k/a} ) \setminus B(0, 2^{-\frac{k+1}{a} } ) \subseteq B(0,2^{-k/a} ) \subseteq \overline{B(0,1)}\) since \( 2^{-k/a} \leq 1  \) (the exponent is non-positive). Furthermore, for \( k \leq -1 \) we can bound \( m(F_{k}) \leq m(\overline{B(0,1)}) < \infty \) by monotonicity as \( F_{k} \subseteq \overline{B(0,1)} \).
+
+Moreover, we claim that for \( k \geq 0 \), \( B(0,2^{-\frac{k+1}{a} }) \subseteq B(0, 2^{-k/a} )  \) since \( x \in B(0,2^{-\frac{k+1}{a} }) \implies |x| < 2^{-\frac{k+1}{a} } = \frac{1}{2^{\frac{k+1}{a} } } \leq \frac{1}{2^{\frac{k}{a} } } = 2^{-k/a}     \) so that \( x \in B(0,2^{-k/a} ) \). Since these open balls have finite radii, it follows that they have finite measure. Thus, by the excision property, \[ m(F_{k} ) = m(B(0, 2^{-k / a} ) \setminus B(0, 2^{-\frac{k+1}{a} } )) = m(B(0,2^{-k/a} ))  - m(B(0, 2^{-\frac{k+1}{a} } )). \] Now notice that \[B(0, 2^{-k / a} ) = \{ 2^{-k / a} x : x \in B(0,1)  \} \mbox{ and } B(0, 2^{-\frac{k+1}{a} } ) = \{ 2^{-\frac{k+1}{a} } x : x \in B(0,1) \}. \tag{by scaling of balls} \] Thus, using question 3 of assignment 1, we can use the dilation property of measure (with \( \delta = (2^{-k/a} , \hdots , 2^{-k/a} ) \) or \( \delta = (2^{-\frac{k+1}{a} } , \hdots , 2^{-\frac{k+1}{a} } ) \)) to obtain:
+\begin{align*}
+	m(F_{k}) &= m(B(0, 2^{-k  /a } )) - m(B(0, 2^{-\frac{k+1}{a} } )) = (2^{(-k/a)} )^{d} m(B(0,1)) - (2^{(-\frac{k+1}{a} )})^{d} m(B(0,1)) \\
+		 &= m(B(0,1)) \cdot (2^{-dk/a} - 2^{(-dk - d)/a}    ) = m(B(0,1)) \cdot (2^{-dk/a} - 2^{-dk/a - d/a} ) \\
+		 &= m(B(0,1)) \cdot (2^{-dk/a} - 2^{-dk/a}\cdot 2^{-d/a}  ) =  2^{-dk/a} m(B(0,1))(1 - 2^{-d/a} ).
+\end{align*}
+For the sake of clarity, let \( b_{d} \coloneqq m(B(0,1)) \) and \( \overline{b_{d} } \coloneqq m(\overline{B(0,1)}) \). For \( ``$\Rightarrow$", \) suppose \( f \) is integrable over \( \mathbb{R}^{d}  \). It follows from (1) that \[\sum_{k=-\infty}^{\infty}2^{k} m(F_{k} )  =  \sum_{k \in \mathbb{Z} }^{}2^{k} m(F_{k} ) < \infty.\] But notice that
+\begin{align*}
+	\sum_{k \in \mathbb{Z} }^{} 2^{k} m(F_{k} ) &= \sum_{k \in \mathbb{Z}_{\leq -1} }^{} 2^{k} m(F_{k}) + \sum_{k = 0 }^{\infty}2^{k} m(f_{k}) \\ 
+						    &\leq \sum_{k \in \mathbb{Z}_{\leq -1} }^{} 2^{k}\cdot \overline{b_{d} }+ \sum_{k=0}^{\infty}2^{k} m(F_{k} ) \tag{as \( m(F_{k} ) \leq m(\overline{B(0,1)}) \)} \\
+						    &= \overline{b_{d} }\cdot \sum_{k=1}^{\infty}2^{-k} +  \sum_{k=0}^{\infty}2^{k} m(F_{k} )= \overline{b_{d} } + \sum_{k=0}^{\infty}2^{k} m(F_{k} ),
+\end{align*}
+and since \(\sum_{k=0}^{\infty}2^{k} m(F_{k} ) \leq \sum_{k\in \mathbb{Z} _{\leq -1} }^{}2^{k} m(F_{k} ) + \sum_{k=0}^{\infty}2^{k} m(F_{k} ) = \sum_{k = -\infty}^{\infty}2^{k} m(F_{k} ) < \infty\), it follows that
+\begin{align*}
+	\sum_{k=0}^{\infty} 2^{k} m(F_{k} ) &= \sum_{k=0}^{\infty}2^{k} b_{d} (2^{-dk/a} )(1 - 2^{-d/a} ) = b_{d}(1-2^{-d/a} ) \sum_{k=0}^{\infty}2^{k - dk/a} \\
+					    &= b_{d}(1-2^{-d/a} ) \sum_{k=0}^{\infty} 2^{k(1 - d/a)} 
+\end{align*}
+so that \( \sum_{k=0}^{\infty}2^{k(1 - d / a)} < \infty \). But then we must have that \( 1 - d/a  \) is negative, otherwise the sum would diverge as \(c\coloneqq 1 - d/a  \geq 0\) is fixed and \( \lim_{{k} \to {\infty}} 2^{ck} = \infty \neq 0 \). Thus \( 1 < d / a \) so that \( a < d \). 
+
+On the other hand, for ``$\Leftarrow$", if \( a < d \) then \( \sum_{k = 0}^{\infty} 2^{k(1 - d / a)}  \) converges, since \( a < d \) means that \( \sum_{k= 0 }^{\infty} 2^{k(1 - d/a)} = \sum_{k=0}^{\infty}\frac{1}{2^{k (d / a - 1)}}  < \infty \). Then since \( c\coloneqq d/a - 1 > 0 \) is fixed, by the ratio test we have convergence: \[\lim_{{k} \to {\infty}} \left | \frac{\frac{1}{2^{ck + c} } }{\frac{1}{2^{ck} } } \right | = \frac{2^{ck} }{2^{ck} \cdot 2^{c} } = \frac{1}{2^{c} } < 1. \] Thus, \[ \sum_{k = -\infty}^{\infty}2^{k} m(F_{k} ) \leq \overline{b_{d} }+\sum_{k = 0 }^{\infty}2^{k}m(F_{k} ) < \infty   ,\] thus \( f \) is integrable by (1). Thus, the proof is complete. \qed \\
+
+\noindent \textbf{Proof of 3.3.}
+Let \( F_{k} = \{ x : 2^{k} < g(x) \leq 2^{k+1}  \}  \). We first note that if \( b \) is negative then \( g \) is unbounded on \( \mathbb{R}^{d} \setminus \overline{B(0,1)} \). This means by monotonicity that \[ \int_{\mathbb{R}^{d} \setminus \overline{B(0,1)}} g \geq \int_{\mathbb{R}^{d} \setminus \overline{B(0,1)}} \chi_{\mathbb{R}^{d} \setminus \overline{B(0,1)}}   = m(\mathbb{R}^{d} \setminus \overline{B(0,1)}) =\infty, \] since \( |x| > 1 \implies g(x) = |x|^{|b|} > 1 = \chi_{\mathbb{R}^d\setminus \overline{B(0,1)}} (x) = 1 \), for \( x \in \mathbb{R}^{d} \setminus \overline{B(0,1)} \). Thus, \( g \) is not integrable over \( \mathbb{R}^{d} \setminus \overline{B(0,1)} \) as \( \int_{\mathbb{R}^{d} \setminus \overline{B(0,1)}} g = \infty \). It follows that \( g \) can not be integrable on \( \mathbb{R}^{d} \). Hence, we may assume that \( b \geq 0 \).
+
+Using (2), we see that for \( k \in \mathbb{Z}  \), \[ F_{k} = \{ x \in \mathbb{R}^{d} \setminus \overline{B(0,1)}  : 2^{k} < |x|^{-b} \leq 2^{k+1}  \} = \{ x \in \mathbb{R}^{d} \setminus \overline{B(0,1)}  : 2^{-k/b} > |x| \geq 2^{-\frac{k+1}{b} }  \}  .\] Thus, since \( x \in F_{k} \iff x \in B(0, 2^{-k / b} ) \setminus (\overline{B(0,1)}\cup B(0, 2^{-\frac{k+1}{b} } )) \), we have that \( F_{k} = \emptyset  \) for \( k \geq 0 \) since \( B(0, 2^{-k/b} ) \subseteq \overline{B(0,1)} \) since \( 2^{-k/b} \leq 1 \). For \( k \leq -1 \) we have \( 2^{-\frac{k+1}{b} } \geq 1 \) (since the exponent is non-negative) so that \( F_{k} = B(0, 2^{-k / b }) \setminus B(0, 2^{- \frac{k+1}{b} } ) \). Thus, using the work in (2) to calculate \( m(F_k) = 2^{-dk/b} b_{d} (1 - 2^{-d/b} )\), we obtain
+
+
+
+\begin{align*}
+	\sum_{k=-\infty}^{\infty}2^{k} m(F_{k} ) &= \sum_{k \leq - 1}^{}2^{k} m(F_{k} ) + \sum_{k \geq 0 }^{}2^{k} \cdot 0 \tag{\( k \geq 0 \implies F_{k} = \emptyset  \)} \\
+						 &= b_{d} (1 - 2^{-d/b} )\sum_{k \leq - 1}^{} 2^{k(1 - d / b)} = b_{d} (1 - 2^{-d/b} )\sum_{k = 1}^{\infty} \frac{1}{2^{k(1 - d / b)}}.
+\end{align*}
+Now, if \( b > d \), letting \( c \coloneqq 1 - d/b > 0 \) so that \( \sum_{k=1}^{\infty} \frac{1}{2^{ck} }  \) converges by the ratio test (this was proven in (2)). Thus \( \sum_{k=-\infty}^{\infty}2^{k} m(F_{k} ) = b_{d} (1 - 2^{-d/b} )\sum_{k=1}^{\infty}2^{-k(1-d/b)} < \infty \) so that \( g \) is integrable. 
+
+
+On the other hand, if \( g \) is integrable, then the above sum converges by (1). In this case, we have that \( 1 - d/b \) is positive, otherwise the sum would diverge since if \( c \coloneqq 1 - d/b < 0\) is fixed then the sum diverges since \( \lim_{{k} \to {\infty}} 1/2^{kc} = \lim_{{k} \to {\infty}}  2^{|kc|} = \infty \neq 0    \). Thus, \( 1 - d/b > 0 \iff d/b < 1 \iff b > d \). Therefore, the proof is complete.\qed
+
+\noindent \textbf{Lemma 3.1.} Let \( \{ F_{k}  \}_{k \in \mathbb{Z} }   \) be a sequence of mutually disjoint measurable sets and \( (c_{k} )_{k \in \mathbb{Z} }  \) be a sequence of non-negative reals. Then, \[\int_{} \sum_{k \in \mathbb{Z} }^{} c_{k}\cdot \chi_{F_{k} } = \sum_{k \in \mathbb{Z} }^{} \int_{} c_{k} \chi_{F_{k} } .  \]
+\begin{proof}
+For \( k \in \mathbb{Z}  \) define \( a_{k}(x) \coloneqq c_{k}\cdot \chi_{F_{k} } (x)   \). Then \( a_{k}  \) is non-negative for each \( k \), and it is measurable since it is a simple function. Since \( \mathbb{Z}  \) is countable, without loss of generality, we can re-index the sequence and the sets \( F_{k} \) to both start at \( k = 1 \). Therefore, we can apply the corollary of Fatou's lemma regarding series (covered in lecture), we conclude that \[\int_{} \sum_{k\in \mathbb{Z} }^{}c_k\cdot\chi_{F_{k} } =  \int_{} \sum_{k=1}^{\infty}a_{k} = \sum_{k=1}^{\infty} \int_{} a_{k} = \sum_{k \in \mathbb{Z} }^{} \int_{} c_{k} \cdot \chi_{F_{k} } . \] 
+\end{proof}

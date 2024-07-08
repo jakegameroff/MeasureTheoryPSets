@@ -1,0 +1,23 @@
+%! TeX root: ../main.tex
+\noindent \textbf{Problem 1.} Let \( A \) be a measurable subset of \( \mathbb{R}^{d}  \) and \( f : A \to \overline{\mathbb{R}} \). For every \( \delta = (\delta_1, \hdots , \delta_d ) \in (0, \infty)^{d} \) and \( y = (y_1, \hdots , y_d) \in \mathbb{R}^{d}  \), let \[A_{\delta , y} \coloneqq \{ (\delta_1 x_1 + y_1, \hdots , \delta_d x_d + y_d ) : x = (x_1, \hdots , x_d) \in A \}   \] and \( f_{\delta ,y} : A_{\delta ,y} \to \overline{\mathbb{R}} \) be the function defined by \[f_{\delta ,y} (x) = f\left ( {\left ((x_1-y_1)/\delta_1 , \hdots , (x_d - y_d) / \delta_d  \right)),} \right \ \forall x \in A_{\delta,y}.  \] Show that:
+\begin{enumerate}
+		\item \( f \) is measurable if and only if \( f_{\delta ,y}  \) is measurable.
+		\item \( f \) is integrable over \( A \) if and only if \( f_{\delta ,y}  \) is integrable over \( A_{\delta ,y}  \). Furthermore, if \( f \) is integrable over \( A \), then \[\int_{A_{\delta ,y} } f_{\delta ,y} = \delta_1\cdots \delta_d \int_{A} f.\] 	
+\end{enumerate}
+\textbf{Proof of 1.1.} For ``\(\Rightarrow\)", suppose \( f \) is measurable. Let \( c \in \mathbb{R} \) be given. Then 
+\begin{align*}
+	 x  \in f_{\delta ,y} ^{-1} ([-\infty,c)) &\iff f_{\delta ,y} (x) < c \iff f(((x_1-y_1)/\delta_1 , \hdots , (x_d - y_d) / \delta_d ) ) < c \\
+						  &\iff ((x_1-y_1)/\delta_1 , \hdots , (x_d - y_d) / \delta_d ) \in f^{-1}([-\infty,c)) \\
+						  &\iff (x_1-y_1, \hdots , x_d-y_d) \in \frac{1}{\delta } f ^{-1} ([-\infty,c)) \coloneqq \{ (x_1/\delta_1 , \hdots , x_d / \delta_d ) : (x_1, \hdots , x_d) \in f ^{-1} ([-\infty,c))  \}\\
+						  &\iff x = (x_1, \hdots , x_d) \in \frac{1}{\delta } f^{-1}([-\infty,c)) - y \coloneqq \{ (x_1 - y_1, \hdots , x_d - y _d) : (x_1, \hdots , x_d) \in \frac{1}{\delta } f^{-1} ([-\infty,c))   \}.
+ \end{align*}
+ Hence \( f _{\delta ,y} ^{-1} ([-\infty,c)) = \frac{1}{\delta } f ^{-1} ([-\infty,c)) + (-y)    \). Since \( f^{-1} ([-\infty,c))   \) is measurable, scaling it by \( 1/\delta  \in (0,\infty)^{d}  \) and translating it by \( -y \in \mathbb{R}^{d}  \) is measurable as well (cf. Assgn 1, Q3). Thus, \( f_{\delta ,y} ^{-1} ([-\infty,c)) \) is measurable. Since \( c \) was arbitrary, we conclude that \( f_{\delta ,y}  \) is measurable. \\
+
+ \noindent On the other hand, for ``\( \Leftarrow \)", suppose \( f_{\delta ,y} \) is measurable. Let \( c \in \mathbb{R} \) be given. Then
+ \begin{align*}
+ 	x \in f ^{-1} ([-\infty,c))  &\iff (x_1 - y_1 , \hdots , x_d - y _d) \in f ^{-1} ([-\infty,c)) - y \coloneqq \{ (x_1 - y_1, \hdots , x_d - y _d) : (x_1, \hdots , x_d) \in f ^{-1} ([-\infty,c))  \} \\
+				     &\iff ((x_1-y_1)/\delta_1 , \hdots , (x_d - y_d) / \delta_d) \in \frac{1}{\delta}(f ^{-1} ([-\infty,c)) - y ),
+\end{align*}
+where \(\frac{1}{\delta}(f ^{-1} ([-\infty,c)) - y ) \coloneqq \{ ((x_1 - y_1)/\delta_1, \hdots , (x_d - y_d) / \delta_d) : (x_1, \hdots , x_2) \in f ^{-1} ([-\infty,c))  \}.\) 
+
+%Then, given \( c \in \mathbb{R} \), \( f ^{-1} ([-\infty,c)   \) is measurable.
